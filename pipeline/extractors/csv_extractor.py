@@ -1,12 +1,8 @@
 import pandas as pd
 
 class CSVExtractor:
-    def __init__(self, file_path: str):
-        """
-        Initializes the CSVExtractor with the path to the CSV file.
-
-        :param file_path: Path to the CSV file.
-        """
+    def __init__(self):
+        pass
 
     def extract(self) -> pd.DataFrame:
         """
