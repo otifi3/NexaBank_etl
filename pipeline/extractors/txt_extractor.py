@@ -1,0 +1,14 @@
+import pandas as pd
+
+class TXTExtractor:
+    def __init__(self, file_path: str):
+        """
+        Initializes the TXTExtractor with the path to the TXT file.
+
+        :param file_path: Path to the TXT file.
+        """
+
+    def extract(self) -> pd.DataFrame:
+        """
+        Extracts data from a TXT file and returns it as a pandas DataFrame.
+        """
