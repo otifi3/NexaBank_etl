@@ -2,14 +2,13 @@ import subprocess
 import os
 
 class HDFSLoader:
-    def __init__(self, hdfs_path):
+    def __init__(self):
         """
         Initializes the HDFSLoader with the path to the HDFS location.
 
         :param hdfs_path: Path to the HDFS location.
         """
-        self.hdfs_path = hdfs_path
-
+        pass
     def save_as_parquet(self, df, local_path) -> None:
         """
         Saves the DataFrame as a Parquet file locally.
@@ -19,7 +18,7 @@ class HDFSLoader:
         """
         df.to_parquet(local_path, index=False)
 
-    def load(self, df, local_path='tmp/') -> None:
+    def load(self, df, hdfspath, local_path='tmp/') -> None:
         """
         Loads the DataFrame to HDFS after saving it locally as a Parquet file.
 
@@ -29,11 +28,11 @@ class HDFSLoader:
         self.save_as_parquet(df, local_path)
 
         try:
-            cmd = ["hdfs", "dfs", "-put", local_path, self.hdfs_path]
+            cmd = ["hdfs", "dfs", "-put", local_path, hdfspath]
 
             subprocess.run(cmd, check=True)
 
-            print(f"File successfully uploaded to HDFS at {self.hdfs_path}")
+            print(f"File successfully uploaded to HDFS at {hdfspath}")
 
         except subprocess.CalledProcessError as e:
             print(f"Failed to upload file to HDFS: {e}")

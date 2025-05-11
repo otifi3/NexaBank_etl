@@ -8,7 +8,12 @@ class TXTExtractor:
         :param file_path: Path to the TXT file.
         """
 
-    def extract(self) -> pd.DataFrame:
+    def extract(self, sep) -> pd.DataFrame:
         """
         Extracts data from a TXT file and returns it as a pandas DataFrame.
         """
+        # Read the TXT file into a DataFrame
+        df = pd.read_csv(self.file_path, sep=sep)
+        
+        # Return the DataFrame
+        return df

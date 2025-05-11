@@ -12,3 +12,8 @@ class CSVExtractor:
         """
         Extracts data from a CSV file and returns it as a pandas DataFrame.
         """
+        # Read the CSV file into a DataFrame
+        df = pd.read_csv(self.file_path)
+        
+        # Return the DataFrame
+        return df

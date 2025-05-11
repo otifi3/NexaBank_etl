@@ -3,25 +3,26 @@ import time
 from datetime import datetime
 
 class FileMonitor:
-    def __init__(self, pipeline, base_dir="/path/to/data"):
+    def __init__(self, pipeline, base_dir):
+        """
+        Initialize the FileMonitor with a pipeline and the base directory to monitor.
+        """
         self.pipeline = pipeline  
         self.base_dir = base_dir  
-        self.last_check_time = time.time()
+        self.last_check_time = time.time() 
 
     def start(self):
         """
         Start monitoring the file system. Once a new file is detected in the partitioned hourly folder,
         run the pipeline with the file.
         """
-        while True:    
+        while True:
             file = self.detect_new_file()
             if file:
-                self.pipeline.run(file) 
+                self.pipeline.run(file)  
                 self.delete_file(file)  
-                print(f"Processed and deleted: {file}")
             else:
-                print("No new file detected.")
-            time.sleep(2)  
+                time.sleep(10)  
 
     def detect_new_file(self):
         """
@@ -34,7 +35,8 @@ class FileMonitor:
         year = current_time.year
         hour = current_time.hour
 
-        dir_path = os.path.join(self.base_dir, f"{day}-{month}-{year}", str(hour).zfill(2))
+        # Construct directory path for the current date and time
+        dir_path = os.path.join(self.base_dir, f"{year}-{month:02d}-{day:02d}", f"{hour:02d}")
 
         if os.path.exists(dir_path):
             files = self.list_files(dir_path)
@@ -71,4 +73,4 @@ class FileMonitor:
         """
         Delete the processed file to prevent it from being processed again.
         """
-        os.remove(file) 
+        os.remove(file)

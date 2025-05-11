@@ -1,0 +1,18 @@
+services:
+  etl:
+    build:
+      context: .
+    container_name: etl_py
+    volumes:
+      - ./pipeline:/home/hadoop/src/pipeline
+      - ./file_monitor:/home/hadoop/src/file_monitor
+      - ./data:/home/hadoop/data
+    working_dir: /home/hadoop/
+    entrypoint: bash
+    tty: true
+    stdin_open: true
+    networks:
+      - hive_cluster_hnet
+networks:
+  hive_cluster_hnet:
+    external: true
