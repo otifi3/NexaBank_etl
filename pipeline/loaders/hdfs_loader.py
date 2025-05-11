@@ -16,7 +16,7 @@ class HDFSLoader:
         :param df: The DataFrame to be saved.
         :param local_path: The local path where the Parquet file will be saved.
         """
-        df.to_parquet(local_path, index=False)
+        df.to_parquet(local_path, index=False, engine='pyarrow') 
 
     def load(self, df, hdfspath, local_path='tmp/') -> None:
         """
