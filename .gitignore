@@ -2,3 +2,4 @@ etl_env/
 .env
 data/
 tmp/
+venv
