@@ -1,1 +1,0 @@
-DIRECTORY_TO_WATCH = "/path/to/files"
