@@ -4,12 +4,6 @@ from datetime import datetime
 class Transformer():
     def __init__(self):
         pass
-    def transform(self, df) -> pd.DataFrame:
-        """
-        Abstract method to transform the dataframe
-        """
-        pass
-
         
     def add_quality(self, df) -> pd.DataFrame:
         """

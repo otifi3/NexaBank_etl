@@ -9,7 +9,7 @@ class LoanTransformers(Transformer):
     def transform(self, df) -> pd.DataFrame:
         df = self.convert_utilization_date(df)
         df = self.calculate_total_cost(df)
-        df = self.encrypt_loan_reason(df)  # This calls the encrypt_loan_reason method
+        df = self.encrypt_loan_reason(df) 
         df = self.add_quality(df)
 
         return df
@@ -32,6 +32,6 @@ class LoanTransformers(Transformer):
         Encrypt the 'loan_reason' column using the Encryptor's encrypt method.
         """
         # Apply encryption to each row of the 'loan_reason' column
-        df = self.encryptor.encrypt(df, 'loan_reason') 
+        df = self.Encryptor.encrypt(df, 'loan_reason') 
         return df
 
