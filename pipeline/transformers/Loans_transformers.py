@@ -31,7 +31,6 @@ class LoanTransformers(Transformer):
         """
         Encrypt the 'loan_reason' column using the Encryptor's encrypt method.
         """
-        # Apply encryption to each row of the 'loan_reason' column
         df = self.Encryptor.encrypt(df, 'loan_reason') 
         return df
 
