@@ -3,7 +3,7 @@ from pipeline.pipeline import Pipeline
 
 def main():
 
-    # Instantiate your pipeline
+    # Instantiate pipeline
     pipeline = Pipeline()
 
     # Create an instance of the FileMonitor with the pipeline and directory path
