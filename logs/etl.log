@@ -68,3 +68,23 @@
 2025-05-12 23:47:46 [INFO] customer_profiles schema validation passed.
 2025-05-12 23:47:46 [INFO] Transformed DataFrame for customer_profiles
 2025-05-12 23:47:46 [INFO] Data successfully written to ./tmp/customer_profiles_time.parquet
+2025-05-12 23:52:14 [INFO] Processing file: data/incomming_data/2025-05-12/23/loans_time.txt
+2025-05-12 23:52:14 [INFO] loans schema validation passed.
+2025-05-12 23:52:14 [INFO] Transformed DataFrame for loans
+2025-05-12 23:52:14 [INFO] Data successfully written to ./tmp/loans_time.parquet
+2025-05-12 23:52:15 [INFO] Processing file: data/incomming_data/2025-05-12/23/support_tickets_time.csv
+2025-05-12 23:52:15 [INFO] support_tickets schema validation passed.
+2025-05-12 23:52:15 [INFO] Transformed DataFrame for support_tickets
+2025-05-12 23:52:15 [INFO] Data successfully written to ./tmp/support_tickets_time.parquet
+2025-05-12 23:52:16 [INFO] Processing file: data/incomming_data/2025-05-12/23/credit_cards_billing_time.csv
+2025-05-12 23:52:17 [INFO] credit_cards_billing schema validation passed.
+2025-05-12 23:52:17 [INFO] Transformed DataFrame for credit_cards_billing
+2025-05-12 23:52:17 [INFO] Data successfully written to ./tmp/credit_cards_billing_time.parquet
+2025-05-12 23:52:18 [INFO] Processing file: data/incomming_data/2025-05-12/23/transactions_time.json
+2025-05-12 23:52:18 [INFO] transactions schema validation passed.
+2025-05-12 23:52:18 [INFO] Transformed DataFrame for transactions
+2025-05-12 23:52:18 [INFO] Data successfully written to ./tmp/transactions_time.parquet
+2025-05-12 23:52:19 [INFO] Processing file: data/incomming_data/2025-05-12/23/customer_profiles_time.csv
+2025-05-12 23:52:19 [INFO] customer_profiles schema validation passed.
+2025-05-12 23:52:19 [INFO] Transformed DataFrame for customer_profiles
+2025-05-12 23:52:20 [INFO] Data successfully written to ./tmp/customer_profiles_time.parquet
