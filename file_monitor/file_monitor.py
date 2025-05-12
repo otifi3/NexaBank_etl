@@ -68,9 +68,3 @@ class FileMonitor:
         Update the timestamp of the last check time to the current time.
         """
         self.last_check_time = time.time()
-
-    def delete_file(self, file):
-        """
-        Delete the processed file to prevent it from being processed again.
-        """
-        os.remove(file)
