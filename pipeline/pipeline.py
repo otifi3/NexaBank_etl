@@ -88,7 +88,7 @@ class Pipeline:
                 raise ValueError(f"Unsupported file type for transformation: {file_type}")
             
             self.parquet_loader.load(df, f'{file.split("/")[-1].split(".")[0]}')
-            # self.hdfs_loader.load(df, f'/staging/{file.split("/")[-1].split(".")[0]}')
+            # self.hdfs_loader.load(df, f'/staging/{file_type}')
 
         except:
             self.notifier.notify(os.getenv('TO_EMAIL_1'))
