@@ -3,19 +3,25 @@ from .transformer import Transformer
 
 
 class CreditTransformers(Transformer):
-    def __init__(self):
-        pass
+    def __init__(self, logger):
+        self.logger = logger
+        self.file = 'credit_card'
 
     def transform(self, df) -> pd.DataFrame:
         """
         Transform the credit data.
         """
-        df = self.add_fully_paid_column(df)
-        df = self.add_debt_column(df)
-        df = self.add_late_days_column(df)
-        df = self.add_fine_column(df)
-        df = self.add_total_amount_column(df)
-        return df
+        try:
+            df = self.add_fully_paid_column(df)
+            df = self.add_debt_column(df)
+            df = self.add_late_days_column(df)
+            df = self.add_fine_column(df)
+            df = self.add_total_amount_column(df)
+            df = self.add_quality(df)
+            return df
+        except Exception as e:
+            self.logger.log('error', f'Error during transformation: {self.file}')
+            raise Exception(f"{self.file} Transformation Failed")
 
     def add_fully_paid_column(self, df: pd.DataFrame) -> pd.DataFrame:
         """

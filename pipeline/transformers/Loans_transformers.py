@@ -1,18 +1,27 @@
 import pandas as pd
-from pipeline.transformers.transformer import Transformer
+from .transformer import Transformer
 from pipeline.encryptors.encryptor import Encryptor
 
 class LoanTransformers(Transformer):
-    def __init__(self, english_path: str):
+    def __init__(self, logger, english_path: str):
+        self.logger = logger
         self.Encryptor = Encryptor(english_path)
+        self.file = 'loan_data'
 
     def transform(self, df) -> pd.DataFrame:
-        df = self.convert_utilization_date(df)
-        df = self.calculate_total_cost(df)
-        df = self.encrypt_loan_reason(df) 
-        df = self.add_quality(df)
-
-        return df
+        """
+        Transform the loan data.
+        """
+        try:
+            df = self.convert_utilization_date(df)
+            df = self.calculate_total_cost(df)
+            df = self.encrypt_loan_reason(df)
+            df = self.add_quality(df)
+            return df
+        except Exception as e:
+            self.logger.log('error', f'Error during transformation: {self.file}')
+            raise Exception(f"{self.file} Transformation Failed")
+    
     def convert_utilization_date(self, df: pd.DataFrame) -> pd.DataFrame:
         """
         Convert 'utilization_date' column to the number of days since the date

@@ -9,104 +9,87 @@ from pipeline.transformers.customer_transformers import CustomerTransformers
 from pipeline.transformers.Loans_transformers import LoanTransformers
 from pipeline.transformers.support_transformers import SupportTransformers
 from pipeline.transformers.money_transfers_transformers import MoneyTransformers
+from pipeline.loaders.parquet_loader import ParquetLoader 
+from pipeline.loaders.hdfs_loader import HDFSLoader 
+
 from pipeline.validators.schema_validator import SchemaValidator
 from pipeline.notifier.email_notifier import EmailNotifier 
 from pipeline.loaders.hdfs_loader import HDFSLoader 
-from pipeline.logger.logger import Logger  
+from pipeline.logger.logger import Logger 
+
 
 class Pipeline:
     def __init__(self, logger: Logger):
         load_dotenv()  # Load environment variables from .env
         self.user = os.getenv("EMAIL_USER")
         self.password = os.getenv("EMAIL_PASSWORD")
-        self.smtp_server = os.getenv("SMTP_SERVER", "smtp.gmail.com") 
-        self.smtp_port = os.getenv("SMTP_PORT", 465)
+        self.smtp_server = 'smtp.gmail.com'
+        self.smtp_port = 587
 
         # Assign the logger
         self.logger = logger
 
         # Initialize extractors
-        self.csv_extractor = CSVExtractor()
-        self.txt_extractor = TXTExtractor()
-        self.json_extractor = JSONExtractor()
+        self.extractors = {
+            "csv": CSVExtractor(logger),
+            "txt": TXTExtractor(logger),
+            "json": JSONExtractor(logger)
+        }
 
         # Initialize transformers
-        self.support_transformers = SupportTransformers()
-        self.loan_transformers = LoanTransformers('./etl/pipeline/support/english_words.txt')
-        self.money_transformers = MoneyTransformers()
-        self.credit_transformers = CreditTransformers()
-        self.customer_transformers = CustomerTransformers()
+        self.transformers = {
+            "credit_cards_billing": CreditTransformers(logger),
+            "customer_profiles": CustomerTransformers(logger),
+            "support_tickets": SupportTransformers(logger),
+            "loans": LoanTransformers(logger, './pipeline/support/english_words.txt'),
+            "transactions": MoneyTransformers(logger)
+        }
 
         # Initialize the schema validator and email notifier
-        self.validator = SchemaValidator('./etl/pipeline/support/schemas.json')  
-        self.notifier = EmailNotifier(self.user, self.password) 
-        self.loader = HDFSLoader() 
+        self.validator = SchemaValidator(logger, './pipeline/support/schemas.json')  
+        self.notifier = EmailNotifier(self.smtp_server, self.smtp_port, self.user, self.password) 
+        self.parquet_loader = ParquetLoader(logger, './tmp')
+        self.hdfs_loader = HDFSLoader(logger) 
 
     def run(self, file):
         """
         Process the file using the appropriate extractor, transformer, validator, and loader.
         """
+        # start processing
         self.logger.log('info', f"Processing file: {file}")
+
+        # Extract file extension
         file_extension = file.split('.')[-1].lower()
 
+        # Extract file type from the file name (without extension)
+        file_type = file.split('/')[-1].rsplit('_', 1)[0]
+
         try:
-            if file_extension == "csv":
-                df = self.process_csv(file)
-            elif file_extension == "txt":
-                df = self.process_txt(file)
-            elif file_extension == "json":
-                df = self.process_json(file)
-            else:
+            # Dynamically select the correct extractor based on the file extension
+            extractor = self.extractors.get(file_extension)
+            if not extractor:
                 self.logger.log('error', f"Unsupported file type: {file_extension}")
-                return
+                raise ValueError(f"Unsupported file type: {file_extension}")
+            if file_extension == 'txt':
+                # For TXT files, specify the delimiter
+                df = extractor.extract(file, '|')
+            else:
+                df = extractor.extract(file)
+            # Validate the DataFrame
+            self.validator.validate(df, file_type)
             
-            file_type = file.split('/')[-1].split('.')[0]
-            if not self.validator.validate(df, file_type):
-                self.logger.log('error', f"Schema validation failed for {file}.")
-                raise ValueError(f"Schema validation failed for {file}.")
-                
-            self.loader.load(df, f'/staging/{file.split("/")[-1].split(".")[0]}')
-            self.logger.log('info', f"Successfully processed and loaded {file} to HDFS.")
+            # Dynamically select the correct transformer based on file type
+            transformer = self.transformers.get(file_type)
+            if transformer:
+                df = transformer.transform(df)
+                self.logger.log('info', f"Transformed DataFrame for {file_type}")
+            else:
+                self.logger.log('error', f"Unsupported file type for transformation: {file_type}")
+                raise ValueError(f"Unsupported file type for transformation: {file_type}")
+            
+            self.parquet_loader.load(df, f'{file.split("/")[-1].split(".")[0]}')
+            # self.hdfs_loader.load(df, f'/staging/{file.split("/")[-1].split(".")[0]}')
 
-        except Exception as e:
-            self.logger.log('error', f"Pipeline failed for {file}: {str(e)}")
-            self.notifier.send_failure_notification(file, str(e))
-            raise
-
-    def process_csv(self, file):
-        """
-        Extract and transform CSV file based on its type.
-        """
-        if 'credit_cards_billing' in file:
-            df = self.csv_extractor.extract(file)
-            df = self.credit_transformers.transform(df)
-            self.logger.log('info', f"Processed Credit CSV file: {file}")
-        elif 'customer_profiles' in file:
-            df = self.csv_extractor.extract(file)
-            df = self.customer_transformers.transform(df)
-            self.logger.log('info', f"Processed Customer CSV file: {file}")
-        elif 'support_tickets' in file:
-            df = self.csv_extractor.extract(file)
-            df = self.support_transformers.transform(df)
-            self.logger.log('info', f"Processed Support CSV file: {file}")
-        else:
-            self.logger.log('error', f"Unsupported CSV file: {file}")
-        return df
-
-    def process_txt(self, file):
-        """
-        Extract and transform TXT file.
-        """
-        df = self.txt_extractor.extract(file)
-        df = self.loan_transformers.transform(df)
-        self.logger.log('info', f"Processed TXT file: {file}")
-        return df
-
-    def process_json(self, file):
-        """
-        Extract and transform JSON file.
-        """
-        df = self.json_extractor.extract(file)
-        df = self.money_transformers.transform(df)
-        self.logger.log('info', f"Processed JSON file: {file}")
-        return df
+        except:
+            self.notifier.notify(os.getenv('TO_EMAIL_1'))
+            

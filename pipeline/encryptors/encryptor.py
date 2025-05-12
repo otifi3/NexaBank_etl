@@ -2,11 +2,12 @@ import pandas as pd
 import random
 
 class Encryptor:
-    def __init__(self, english_dict: dict):
+    def __init__(self, english_path: dict):
         """
         Initialize the Encryptor with a dictionary (dictionary) for validation.
         """
-        self.english_dict = english_dict
+        self.english_path = english_path
+        self.english_dict = {} 
 
     def encrypt(self, df, column) -> pd.DataFrame:
         """
@@ -25,6 +26,7 @@ class Encryptor:
         """
         first_message = df[column].iloc[0] 
         best_shift = self.get_best_shift(first_message) 
+       
 
         df[column] = df[column].apply(lambda x: self.caesar_cipher(x, -best_shift))  
 
@@ -37,6 +39,7 @@ class Encryptor:
         """
         best_shift = 0
         max_score = 0
+        self.english_dict = self.get_english_dict(self.english_path)
 
         for shift in range(1, 25): 
             decrypted_text = self.caesar_cipher(encrypted_text, -shift) 
@@ -69,9 +72,11 @@ class Encryptor:
         """
         return random.randint(1, 25)
     
-# english_dict = {}
-# with open('english_words.txt', 'r') as file:
-#     for line in file:
-#         words = line.strip().split(' ') 
-#         for word in words:
-#             english_dict[word.lower()] = 1  
+    def get_english_dict(self, english_path):
+        english_dict = {}
+        with open(english_path, 'r') as file:
+            for line in file:
+                words = line.strip().split(' ') 
+                for word in words:
+                    english_dict[word.lower()] = 1  
+        return english_dict

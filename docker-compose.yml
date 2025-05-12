@@ -6,6 +6,8 @@ services:
     volumes:
       - ./pipeline:/home/hadoop/src/pipeline
       - ./file_monitor:/home/hadoop/src/file_monitor
+      - ./tmp:/home/hadoop/tmp
+      - ./logs:/home/hadoop/logs
       - ./data:/home/hadoop/data
     working_dir: /home/hadoop/
     entrypoint: bash

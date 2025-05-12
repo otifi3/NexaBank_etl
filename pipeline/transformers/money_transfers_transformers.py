@@ -3,16 +3,22 @@ from .transformer import Transformer
 
 
 class MoneyTransformers(Transformer):
-    def __init__(self):
-        pass
+    def __init__(self, logger):
+        self.logger = logger
+        self.file = 'money_data'
 
     def transform(self, df) -> pd.DataFrame:
         """
         Apply transformations to the transaction data.
         """
-        df = self.add_cost_column(df)
-        df = self.add_total_amount_column(df)
-        return df
+        try:
+            df = self.add_cost_column(df)
+            df = self.add_total_amount_column(df)
+            df = self.add_quality(df)
+            return df
+        except Exception as e:
+            self.logger.log('error', f'Error during transformation: {self.file}')
+            raise Exception(f"{self.file} Transformation Failed")
 
     def add_cost_column(self, df: pd.DataFrame) -> pd.DataFrame:
         """

@@ -1,28 +1,69 @@
 import os
 import time
+import threading
 from datetime import datetime
+from queue import Queue
 
 class FileMonitor:
-    def __init__(self, pipeline, base_dir):
+    def __init__(self, pipeline, base_dir, clear_interval=3600):
         """
         Initialize the FileMonitor with a pipeline and the base directory to monitor.
+        :param pipeline: The pipeline to process files.
+        :param base_dir: The directory to monitor for new files.
+        :param clear_interval: The time interval (in seconds) to clear the processed files set (default is 1 hour).
         """
-        self.pipeline = pipeline  
-        self.base_dir = base_dir  
-        self.last_check_time = time.time() 
+        self.pipeline = pipeline
+        self.base_dir = base_dir
+        self.last_check_time = time.time()
+        self.file_queue = Queue()  # Queue to hold the file paths for processing
+        self.processed_files = set()  # Set to keep track of processed files
+        self.clear_interval = clear_interval  # Interval to clear the processed files set
+        self.last_clear_time = time.time()  # Keep track of when the set was last cleared
 
     def start(self):
         """
         Start monitoring the file system. Once a new file is detected in the partitioned hourly folder,
         run the pipeline with the file.
         """
+        monitor_thread = threading.Thread(target=self.monitor_files)
+        pipeline_thread = threading.Thread(target=self.process_files)
+
+        monitor_thread.daemon = True  
+        pipeline_thread.daemon = True  
+
+        monitor_thread.start()
+        pipeline_thread.start()
+
+        monitor_thread.join()  
+        pipeline_thread.join()  
+
+    def monitor_files(self):
+        """
+        Continuously monitor the directory for new files and add them to the file queue.
+        """
         while True:
+            self.check_and_clear_processed_files()  
             file = self.detect_new_file()
-            if file:
-                self.pipeline.run(file)  
-                self.delete_file(file)  
+        
+            if file and file not in self.processed_files:
+                self.file_queue.put(file)  
+                self.processed_files.add(file)  
             else:
-                time.sleep(10)  
+                time.sleep(1)  
+    def process_files(self):
+        """
+        Continuously retrieve file paths from the queue, process the file with the pipeline,
+        and remove it from the queue after processing.
+        """
+        while True:
+            if not self.file_queue.empty():
+                file = self.file_queue.get()  # Retrieve the next file from the queue
+                self.pipeline.run(file)  # Process the file using the pipeline
+                self.file_queue.task_done()  # Mark the task as done
+                self.remove_file(file)  # Remove the file after processing
+
+            else:
+                time.sleep(1)  # Sleep for a short time if the queue is empty
 
     def detect_new_file(self):
         """
@@ -41,8 +82,7 @@ class FileMonitor:
         if os.path.exists(dir_path):
             files = self.list_files(dir_path)
             for file in files:
-                if self.is_recently_modified(file):
-                    return file
+                return file
         return None
 
     def list_files(self, dir_path):
@@ -55,16 +95,19 @@ class FileMonitor:
         except FileNotFoundError:
             return []  
 
-    def is_recently_modified(self, file):
-        """
-        Check if a file was modified after the last check time.
-        Returns True if the file was modified after the last check.
-        """
-        file_mtime = os.path.getmtime(file)
-        return file_mtime > self.last_check_time
 
-    def update_last_check_time(self):
+    def remove_file(self, file):
         """
-        Update the timestamp of the last check time to the current time.
+        Remove the file from the directory to prevent it from being processed again.
         """
-        self.last_check_time = time.time()
+        os.remove(file)
+
+    def check_and_clear_processed_files(self):
+        """
+        Check if the time has passed for the interval to clear the processed files set.
+        Clears the set if the interval is reached.
+        """
+        current_time = time.time()
+        if current_time - self.last_clear_time >= self.clear_interval:
+            self.processed_files.clear()  
+            self.last_clear_time = current_time  

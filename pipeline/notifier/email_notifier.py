@@ -11,18 +11,18 @@ class EmailNotifier:
         self.sender_email = sender_email  
         self.sender_password = sender_password 
 
-    def notify(self, recipient_email, file_name) -> None:
+    def notify(self, recipient_email) -> None:
         """
         Send an email notification to the recipient when the ETL process fails.
 
         :param recipient_email: The recipient's email address
         :param file_name: The name of the file that caused the ETL failure
         """
-        # Static subject
-        subject = "ETL Alert"
+        date_now = str(datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+        subject="ALERT: ETL Process Failed"
         
-        # Static body with the current datetime and the passed file name
-        body = f"The ETL process has failed with the file: {file_name} at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}."
+        body=f"An error occurred during the ETL process at {date_now}, \n Please check the logs for more details."
+        
 
         # Create the email message
         msg = MIMEMultipart()

@@ -1,17 +1,23 @@
 import pandas as pd
-from transformer import Transformer
+from .transformer import Transformer
 
 class SupportTransformers(Transformer):
-    def __init__(self):
-        pass
-    
+    def __init__(self, logger):
+        self.logger = logger
+        self.file = 'support_data'
+
     def transform(self, df) -> pd.DataFrame:
         """
-        Apply transformations to the Support.
+        Apply transformations to the Support data.
         """
-        df = self.convert_complaint_date(df)
-        df = self.calculate_age(df)
-        return df
+        try:
+            df = self.convert_complaint_date(df)
+            df = self.calculate_age(df)
+            df = self.add_quality(df)
+            return df
+        except Exception as e:
+            self.logger.log('error', f'Error during transformation: {self.file}')
+            raise Exception(f"{self.file} Transformation Failed")
 
     def convert_complaint_date(self, df: pd.DataFrame) -> pd.DataFrame:
         """

@@ -29,7 +29,7 @@ LOCATION '/stage/loans';
 
 
 -- create table for money transfers
-CREATE EXTERNAL TABLE money_transfers (
+CREATE EXTERNAL TABLE transactions (
     sender STRING,
     receiver STRING,
     transaction_amount FLOAT,
@@ -41,7 +41,7 @@ CREATE EXTERNAL TABLE money_transfers (
     partition_hour INT
 )
 STORED AS PARQUET
-LOCATION '/stage/money_transfers';
+LOCATION '/stage/transactions';
 
 
 -- create table for customer complaints

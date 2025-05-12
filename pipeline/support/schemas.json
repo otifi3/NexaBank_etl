@@ -1,16 +1,15 @@
 {
-    "customer": {
+    "customer_profiles": {
         "customer_id": "str",
         "name": "str",
         "gender": "str",
         "age": "int",
         "city": "str",
-        "account_type": "str",
-        "account_open_date": "str", 
+        "account_open_date": "str",
         "product_type": "str", 
         "customer_tier": "str"
     },
-    "credit": {
+    "credit_cards_billing": {
         "bill_id": "str",
         "customer_id": "str",
         "month": "str",
@@ -18,7 +17,7 @@
         "amount_paid": "float",
         "payment_date": "str"
     },
-    "support": {
+    "support_tickets": {
         "ticket_id": "str",
         "customer_id": "str",
         "complaint_category": "str",
@@ -28,14 +27,14 @@
     "loans": {
         "customer_id": "str",
         "loan_type": "str",
-        "amount_utilized": "float",
+        "amount_utilized": "int",
         "utilization_date": "str",
         "loan_reason": "str"
     },
-    "money": {
+    "transactions": {
         "sender": "str",
         "receiver": "str",
-        "transaction_amount": "float",
+        "transaction_amount": "int",
         "transaction_date": "str"
     }
 }

@@ -1,13 +1,17 @@
 from file_monitor.file_monitor import FileMonitor
-from pipeline.pipeline import Pipeline  
+from pipeline.pipeline import Pipeline
+from pipeline.logger.logger import Logger 
+import os
 
 def main():
+    # Initialize logger
+    logger = Logger('./logs/etl.log')  # Ensure you have a log file to capture logs
 
-    # Instantiate pipeline
-    pipeline = Pipeline()
+    # Instantiate the pipeline with the logger
+    pipeline = Pipeline(logger)
 
-    # Create an instance of the FileMonitor with the pipeline and directory path
-    file_monitor = FileMonitor(pipeline, base_dir="/home/hadoop/data/incomming_data")
+    # Create an instance of the FileMonitor with the pipeline and the directory path to monitor
+    file_monitor = FileMonitor(pipeline, base_dir="data/incomming_data")
 
     # Start the file monitor to continuously check for new files and process them
     file_monitor.start()

@@ -3,16 +3,22 @@ from .transformer import Transformer
 
 
 class CustomerTransformers(Transformer):
-    def __init__(self):
-        pass
+    def __init__(self, logger):
+        self.logger = logger
+        self.file = 'customer_data'
 
     def transform(self, df) -> pd.DataFrame:
         """
         Transform the customer data.
         """
-        df = self.add_tenure(df)
-        df = self.categorize_customer_segment(df)
-        return df
+        try:
+            df = self.add_tenure(df)
+            df = self.categorize_customer_segment(df)
+            df = self.add_quality(df)
+            return df
+        except Exception as e:
+            self.logger.log('error', f'Error during transformation: {self.file}')
+            raise Exception(f"{self.file} Transformation Failed")
 
     def add_tenure(self, df: pd.DataFrame) -> pd.DataFrame:
         """
