@@ -4,8 +4,7 @@ services:
       context: .
     container_name: etl_py
     volumes:
-      - ./pipeline:/home/hadoop/src/pipeline
-      - ./file_monitor:/home/hadoop/src/file_monitor
+      - ./src:/home/hadoop/src
       - ./tmp:/home/hadoop/tmp
       - ./logs:/home/hadoop/logs
       - ./data:/home/hadoop/data
