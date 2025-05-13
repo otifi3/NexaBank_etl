@@ -333,3 +333,113 @@
 2025-05-13 13:05:05 [INFO] Data successfully written to ./tmp/customer_profiles_time.parquet
 2025-05-13 13:05:05 [INFO] Pipeline completed successfully for file: customer_profiles 
  ==========================================================================================================================================================================================================================================================
+2025-05-13 13:41:48 [INFO] Processing file: loans
+2025-05-13 13:41:48 [INFO] Extracted loans: 
+columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason'] 
+rows => 1000
+2025-05-13 13:41:48 [INFO] loans schema validation passed.
+2025-05-13 13:41:48 [INFO] Transformed loans: 
+columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason', 'total_cost', 'processing_time', 'partition_date', 'partition_hour'] 
+rows => 1000
+2025-05-13 13:41:48 [INFO] Data successfully written to ./tmp/loans_time.parquet
+2025-05-13 13:41:48 [ERROR] Pipeline failed for file: loans with error: 
+HDFSLoader.load() got multiple values for argument 'hdfspath'
+2025-05-13 13:41:52 [INFO] Processing file: support_tickets
+2025-05-13 13:41:52 [INFO] Extracted support_tickets: 
+columns => ['ticket_id', 'customer_id', 'complaint_category', 'complaint_date', 'severity'] 
+rows => 15000
+2025-05-13 13:41:52 [INFO] support_tickets schema validation passed.
+2025-05-13 13:41:52 [INFO] Transformed support_tickets: 
+columns => ['ticket_id', 'customer_id', 'complaint_category', 'complaint_date', 'severity', 'age', 'processing_time', 'partition_date', 'partition_hour'] 
+rows => 15000
+2025-05-13 13:41:52 [INFO] Data successfully written to ./tmp/support_tickets_time.parquet
+2025-05-13 13:41:52 [ERROR] Pipeline failed for file: support_tickets with error: 
+HDFSLoader.load() got multiple values for argument 'hdfspath'
+2025-05-13 13:41:56 [INFO] Processing file: credit_cards_billing
+2025-05-13 13:41:56 [INFO] Extracted credit_cards_billing: 
+columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date'] 
+rows => 200000
+2025-05-13 13:41:56 [INFO] credit_cards_billing schema validation passed.
+2025-05-13 13:41:56 [INFO] Transformed credit_cards_billing: 
+columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date', 'fully_paid', 'debt', 'due_date', 'late_days', 'fine', 'total_amount', 'processing_time', 'partition_date', 'partition_hour'] 
+rows => 200000
+2025-05-13 13:41:56 [INFO] Data successfully written to ./tmp/credit_cards_billing_time.parquet
+2025-05-13 13:41:56 [ERROR] Pipeline failed for file: credit_cards_billing with error: 
+HDFSLoader.load() got multiple values for argument 'hdfspath'
+2025-05-13 13:42:00 [INFO] Processing file: transactions
+2025-05-13 13:42:00 [INFO] Extracted transactions: 
+columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date'] 
+rows => 100000
+2025-05-13 13:42:00 [INFO] transactions schema validation passed.
+2025-05-13 13:42:00 [INFO] Transformed transactions: 
+columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date', 'cost', 'total_amount', 'processing_time', 'partition_date', 'partition_hour'] 
+rows => 100000
+2025-05-13 13:42:00 [INFO] Data successfully written to ./tmp/transactions_time.parquet
+2025-05-13 13:42:00 [ERROR] Pipeline failed for file: transactions with error: 
+HDFSLoader.load() got multiple values for argument 'hdfspath'
+2025-05-13 13:42:04 [INFO] Processing file: customer_profiles
+2025-05-13 13:42:04 [INFO] Extracted customer_profiles: 
+columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier'] 
+rows => 100000
+2025-05-13 13:42:04 [INFO] customer_profiles schema validation passed.
+2025-05-13 13:42:04 [INFO] Transformed customer_profiles: 
+columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier', 'tenure', 'customer_segment', 'processing_time', 'partition_date', 'partition_hour'] 
+rows => 100000
+2025-05-13 13:42:04 [INFO] Data successfully written to ./tmp/customer_profiles_time.parquet
+2025-05-13 13:42:04 [ERROR] Pipeline failed for file: customer_profiles with error: 
+HDFSLoader.load() got multiple values for argument 'hdfspath'
+2025-05-13 13:44:08 [INFO] Processing file: loans
+2025-05-13 13:44:08 [INFO] Extracted loans: 
+columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason'] 
+rows => 1000
+2025-05-13 13:44:08 [INFO] loans schema validation passed.
+2025-05-13 13:44:08 [INFO] Transformed loans: 
+columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason', 'total_cost', 'processing_time', 'partition_date', 'partition_hour'] 
+rows => 1000
+2025-05-13 13:44:08 [INFO] Data successfully written to ./tmp/loans_time.parquet
+2025-05-13 13:44:08 [INFO] Pipeline completed successfully for file: loans 
+ ==========================================================================================================================================================================================================================================================
+2025-05-13 13:44:09 [INFO] Processing file: support_tickets
+2025-05-13 13:44:09 [INFO] Extracted support_tickets: 
+columns => ['ticket_id', 'customer_id', 'complaint_category', 'complaint_date', 'severity'] 
+rows => 15000
+2025-05-13 13:44:09 [INFO] support_tickets schema validation passed.
+2025-05-13 13:44:09 [INFO] Transformed support_tickets: 
+columns => ['ticket_id', 'customer_id', 'complaint_category', 'complaint_date', 'severity', 'age', 'processing_time', 'partition_date', 'partition_hour'] 
+rows => 15000
+2025-05-13 13:44:09 [INFO] Data successfully written to ./tmp/support_tickets_time.parquet
+2025-05-13 13:44:09 [INFO] Pipeline completed successfully for file: support_tickets 
+ ==========================================================================================================================================================================================================================================================
+2025-05-13 13:44:10 [INFO] Processing file: credit_cards_billing
+2025-05-13 13:44:11 [INFO] Extracted credit_cards_billing: 
+columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date'] 
+rows => 200000
+2025-05-13 13:44:11 [INFO] credit_cards_billing schema validation passed.
+2025-05-13 13:44:11 [INFO] Transformed credit_cards_billing: 
+columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date', 'fully_paid', 'debt', 'due_date', 'late_days', 'fine', 'total_amount', 'processing_time', 'partition_date', 'partition_hour'] 
+rows => 200000
+2025-05-13 13:44:11 [INFO] Data successfully written to ./tmp/credit_cards_billing_time.parquet
+2025-05-13 13:44:11 [INFO] Pipeline completed successfully for file: credit_cards_billing 
+ ==========================================================================================================================================================================================================================================================
+2025-05-13 13:44:12 [INFO] Processing file: transactions
+2025-05-13 13:44:12 [INFO] Extracted transactions: 
+columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date'] 
+rows => 100000
+2025-05-13 13:44:12 [INFO] transactions schema validation passed.
+2025-05-13 13:44:12 [INFO] Transformed transactions: 
+columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date', 'cost', 'total_amount', 'processing_time', 'partition_date', 'partition_hour'] 
+rows => 100000
+2025-05-13 13:44:12 [INFO] Data successfully written to ./tmp/transactions_time.parquet
+2025-05-13 13:44:12 [INFO] Pipeline completed successfully for file: transactions 
+ ==========================================================================================================================================================================================================================================================
+2025-05-13 13:44:13 [INFO] Processing file: customer_profiles
+2025-05-13 13:44:13 [INFO] Extracted customer_profiles: 
+columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier'] 
+rows => 100000
+2025-05-13 13:44:13 [INFO] customer_profiles schema validation passed.
+2025-05-13 13:44:14 [INFO] Transformed customer_profiles: 
+columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier', 'tenure', 'customer_segment', 'processing_time', 'partition_date', 'partition_hour'] 
+rows => 100000
+2025-05-13 13:44:14 [INFO] Data successfully written to ./tmp/customer_profiles_time.parquet
+2025-05-13 13:44:14 [INFO] Pipeline completed successfully for file: customer_profiles 
+ ==========================================================================================================================================================================================================================================================
