@@ -8,6 +8,7 @@ services:
       - ./tmp:/home/hadoop/tmp
       - ./logs:/home/hadoop/logs
       - ./data:/home/hadoop/data
+      - ./state:/home/hadoop/state
     working_dir: /home/hadoop/
     entrypoint: bash
     tty: true
