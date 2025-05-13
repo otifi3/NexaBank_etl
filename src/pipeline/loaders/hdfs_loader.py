@@ -10,7 +10,7 @@ class HDFSLoader:
         """
         self.logger = logger
 
-    def load(self, hdfspath, local_path='tmp/') -> None:
+    def load(self, hdfspath, local_path) -> None:
         """
         Loads the DataFrame to HDFS after saving it locally as a Parquet file.
 

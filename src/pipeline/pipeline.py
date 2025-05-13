@@ -93,9 +93,8 @@ class Pipeline:
                 raise ValueError(f"Unsupported file type for transformation: {file_type}")
             
             self.parquet_loader.load(df, f'{file.split("/")[-1].split(".")[0]}')
-            # self.hdfs_loader.load(df, 
-            #                       hdfspath=f'/staging/{file.split("/")[-1].split(".")[0]}', 
-            #                       local_path=f'./tmp/{file.split("/")[-1].split(".")[0]}.parquet')
+            self.hdfs_loader.load(hdfspath=f'/staging/{file.split("/")[-1].split(".")[0]}', 
+                                  local_path=f'./tmp/{file.split("/")[-1].split(".")[0]}.parquet')
             
             self.logger.log('info', f"Pipeline completed successfully for file: {file_type} \n {'='*250}")
 
