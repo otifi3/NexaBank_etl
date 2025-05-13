@@ -18,6 +18,7 @@ class CreditTransformers(Transformer):
             df = self.add_fine_column(df)
             df = self.add_total_amount_column(df)
             df = self.add_quality(df)
+            df = self.conver_to_date(df, ['payment_date', 'partition_date'])
             
             return df
         except Exception as e:

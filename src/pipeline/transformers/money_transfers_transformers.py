@@ -15,6 +15,8 @@ class MoneyTransformers(Transformer):
             df = self.add_cost_column(df)
             df = self.add_total_amount_column(df)
             df = self.add_quality(df)
+            df = self.conver_to_date(df, ['transaction_date', 'partition_date'])
+
             return df
         except Exception as e:
             self.logger.log('error', f'Error during transformation: {self.file}')

@@ -35,6 +35,7 @@ class EmailNotifier:
 
 
         with smtplib.SMTP(self.smtp_server, self.smtp_port) as server:
+            server.ehlo()
             # Use TLS for security
             server.starttls()
             # Log in to the email account

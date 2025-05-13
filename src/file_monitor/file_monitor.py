@@ -99,7 +99,9 @@ class FileMonitor:
         """
         Remove the file from the directory to prevent it from being processed again.
         """
-        os.remove(file)
+        if os.path.exists(file):
+            os.remove(file)
+
 
     def check_and_clear_processed_files(self):
         """

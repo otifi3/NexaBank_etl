@@ -16,3 +16,19 @@ class Transformer():
         df['partition_hour'] = datetime.now().hour  
     
         return df
+    
+    def conver_to_date(self, df, columns) -> pd.DataFrame:
+        """
+        convert_to_datetime function to convert columns to datetime
+        """
+        for column in columns:
+            # df[column] =  df[column].astype(str)
+            df[column] = pd.to_datetime(df[column], format='%Y-%m-%d', errors='coerce').dt.date
+        return df
+    
+    def calculate_age(self, df: pd.DataFrame, date_column: str ) -> pd.DataFrame:
+        """
+        Calculate the age (days since specific date).
+        """
+        df['age'] = (pd.to_datetime('today') - pd.to_datetime(df[date_column])).dt.days
+        return df

@@ -11,25 +11,22 @@ class SupportTransformers(Transformer):
         Apply transformations to the Support data.
         """
         try:
-            df = self.convert_complaint_date(df)
-            df = self.calculate_age(df)
+            # df = self.convert_complaint_date(df)
+            df = self.calculate_age(df, 'complaint_date')
             df = self.add_quality(df)
+            df = self.conver_to_date(df, ['complaint_date', 'partition_date'])
+            
             
             return df
         except Exception as e:
             self.logger.log('error', f'Error during transformation: {self.file}')
             raise Exception(f"{self.file} Transformation Failed")
 
-    def convert_complaint_date(self, df: pd.DataFrame) -> pd.DataFrame:
-        """
-        Convert 'complaint_date' column to datetime format.
-        """
-        df['complaint_date'] = pd.to_datetime(df['complaint_date'])
-        return df
+    # def convert_complaint_date(self, df: pd.DataFrame) -> pd.DataFrame:
+    #     """
+    #     Convert 'complaint_date' column to datetime format.
+    #     """
+    #     df['complaint_date'] = pd.to_datetime(df['complaint_date'], format='%Y-%m-%d', errors='coerce').dt.date
+    #     return df
 
-    def calculate_age(self, df: pd.DataFrame) -> pd.DataFrame:
-        """
-        Calculate the age (days since the complaint date).
-        """
-        df['age'] = (pd.to_datetime('today') - df['complaint_date']).dt.days
-        return df
+

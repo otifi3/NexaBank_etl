@@ -13,23 +13,17 @@ class LoanTransformers(Transformer):
         Transform the loan data.
         """
         try:
-            df = self.convert_utilization_date(df)
+            df = self.calculate_age(df, 'utilization_date')
             df = self.calculate_total_cost(df)
             df = self.encrypt_loan_reason(df)
             df = self.add_quality(df)
+            df = self.conver_to_date(df, ['utilization_date', 'partition_date'])
             
             return df
         except Exception as e:
             self.logger.log('error', f'Error during transformation: {self.file}')
             raise Exception(f"{self.file} Transformation Failed")
     
-    def convert_utilization_date(self, df: pd.DataFrame) -> pd.DataFrame:
-        """
-        Convert 'utilization_date' column to the number of days since the date
-        """
-        df['utilization_date'] = pd.to_datetime(df['utilization_date'])
-        df['utilization_date'] = (pd.to_datetime('today') - df['utilization_date']).dt.days
-        return df
 
     def calculate_total_cost(self, df: pd.DataFrame) -> pd.DataFrame:
         """

@@ -1,5 +1,6 @@
 from dotenv import load_dotenv
 import os
+import shutil
 from pipeline.extractors.csv_extractor import CSVExtractor
 from pipeline.extractors.txt_extractor import TXTExtractor
 from pipeline.extractors.json_extractor import JSONExtractor
@@ -41,12 +42,12 @@ class Pipeline:
             "credit_cards_billing": CreditTransformers(logger),
             "customer_profiles": CustomerTransformers(logger),
             "support_tickets": SupportTransformers(logger),
-            "loans": LoanTransformers(logger, './src/pipeline/support/english_words.txt'),
+            "loans": LoanTransformers(logger, '/home/hadoop/src/pipeline/support/english_words.txt'),
             "transactions": MoneyTransformers(logger)
         }
 
         # Initialize the schema validator and email notifier
-        self.validator = SchemaValidator(logger, './src/pipeline/support/schemas.json')  
+        self.validator = SchemaValidator(logger, '/home/hadoop/src/pipeline/support/schemas.json')  
         self.notifier = EmailNotifier(self.smtp_server, self.smtp_port, self.user, self.password) 
         self.parquet_loader = ParquetLoader(logger, './tmp')
         self.hdfs_loader = HDFSLoader(logger) 
@@ -93,12 +94,13 @@ class Pipeline:
                 raise ValueError(f"Unsupported file type for transformation: {file_type}")
             
             self.parquet_loader.load(df, f'{file.split("/")[-1].split(".")[0]}')
-            self.hdfs_loader.load(hdfspath=f'/staging/{file.split("/")[-1].split(".")[0]}', 
-                                  local_path=f'./tmp/{file.split("/")[-1].split(".")[0]}.parquet')
+            self.hdfs_loader.load(hdfspath=f'/stage/{file_type}', 
+                                  local_path=f'/home/hadoop/tmp/{file.split("/")[-1].split(".")[0]}.parquet')
             
             self.logger.log('info', f"Pipeline completed successfully for file: {file_type} \n {'='*250}")
 
         except Exception as e:
-            self.logger.log('error', f"Pipeline failed for file: {file_type} with error: \n{e}")
+            self.logger.log('error', f"Pipeline failed for file: {file_type} with error: \n{e} \n {'='*250}")
+            shutil.move(file, f'./data/failed_files/{file.split("/")[-1]}')
             self.notifier.notify(os.getenv('TO_EMAIL_1'))
             

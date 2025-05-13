@@ -20,7 +20,8 @@ CREATE EXTERNAL TABLE loans (
     customer_id STRING,
     loan_type STRING,
     amount_utilized FLOAT,
-    utilization_date INT,
+    utilization_date DATE,
+    age INT,
     total_cost FLOAT,
     processing_time STRING,
     partition_date DATE,
@@ -85,5 +86,11 @@ LOCATION '/stage/customer_profiles';
 
 
 
+-- hdfs dfs -rm -r /stage
+-- hdfs dfs -mkdir -p /stage/credit_cards_billing
+-- hdfs dfs -mkdir -p /stage/customer_profiles
+-- hdfs dfs -mkdir -p /stage/loans
+-- hdfs dfs -mkdir -p /stage/support_tickets
+-- hdfs dfs -mkdir -p /stage/transactions
 
 

@@ -15,6 +15,7 @@ class CustomerTransformers(Transformer):
             df = self.add_tenure(df)
             df = self.categorize_customer_segment(df)
             df = self.add_quality(df)
+            df = self.conver_to_date(df, ['account_open_date', 'partition_date'])
             
             return df
         except Exception as e:

@@ -30,6 +30,7 @@ class HDFSLoader:
         except subprocess.CalledProcessError as e:
             # Log the error message
             self.logger.log('error', f"Failed to upload file to HDFS: {e}")
+            raise Exception(f"Failed to upload file to HDFS: {e}")
         
         finally:
             if os.path.exists(local_path):
