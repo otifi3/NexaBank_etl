@@ -63,7 +63,7 @@ class FileMonitor:
                 self.remove_file(file)  # Remove the file after processing
 
             else:
-                time.sleep(1)  # Sleep for a short time if the queue is empty
+                time.sleep(1)  
 
     def detect_new_file(self):
         """
@@ -76,7 +76,6 @@ class FileMonitor:
         year = current_time.year
         hour = current_time.hour
 
-        # Construct directory path for the current date and time
         dir_path = os.path.join(self.base_dir, f"{year}-{month:02d}-{day:02d}", f"{hour:02d}")
 
         if os.path.exists(dir_path):

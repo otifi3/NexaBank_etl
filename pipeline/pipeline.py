@@ -94,7 +94,6 @@ class Pipeline:
             
             self.parquet_loader.load(df, f'{file.split("/")[-1].split(".")[0]}')
             # self.hdfs_loader.load(df, f'/staging/{file.split("/")[-1].split(".")[0]}')
-            self.logger.log('info', f"Pipeline completed successfully for file: {file_type} \n {'='*250}")
 
         except:
             self.notifier.notify(os.getenv('TO_EMAIL_1'))
