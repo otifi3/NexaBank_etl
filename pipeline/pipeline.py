@@ -78,7 +78,7 @@ class Pipeline:
             else:
                 df = extractor.extract(file)
 
-            self.logger.log('info', f'Extracted {file_type}: \n columns => {list(df.columns)} \n rows => {df.shape[0]}')       
+            self.logger.log('info', f'Extracted {file_type}: \ncolumns => {list(df.columns)} \nrows => {df.shape[0]}')       
 
             # Validate the DataFrame
             self.validator.validate(df, file_type)
@@ -87,15 +87,19 @@ class Pipeline:
             transformer = self.transformers.get(file_type)
             if transformer:
                 df = transformer.transform(df)
-                self.logger.log('info', f"Transformed {file_type}: \n columns => {list(df.columns)} \n rows => {df.shape[0]}")
+                self.logger.log('info', f"Transformed {file_type}: \ncolumns => {list(df.columns)} \nrows => {df.shape[0]}")
             else:
                 self.logger.log('error', f"Unsupported file type for transformation: {file_type}")
                 raise ValueError(f"Unsupported file type for transformation: {file_type}")
             
             self.parquet_loader.load(df, f'{file.split("/")[-1].split(".")[0]}')
-            # self.hdfs_loader.load(df, f'/staging/{file.split("/")[-1].split(".")[0]}')
+            self.hdfs_loader.load(df, 
+                                  hdfspath=f'/staging/{file.split("/")[-1].split(".")[0]}', 
+                                  local_path=f'./tmp/{file.split("/")[-1].split(".")[0]}.parquet')
+            
             self.logger.log('info', f"Pipeline completed successfully for file: {file_type} \n {'='*250}")
 
-        except:
+        except Exception as e:
+            self.logger.log('error', f"Pipeline failed for file: {file_type} with error: \n{e}")
             self.notifier.notify(os.getenv('TO_EMAIL_1'))
             

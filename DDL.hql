@@ -1,3 +1,5 @@
+CREATE DATABASE NexaBank_DS;
+
 -- create table for support tickets
 CREATE EXTERNAL TABLE support_tickets (
     ticket_id STRING,
@@ -62,24 +64,26 @@ CREATE EXTERNAL TABLE credit_cards_billing (
 STORED AS PARQUET
 LOCATION '/stage/credit_cards_billing';
 
-
--- create table for credit cards billing
-CREATE EXTERNAL TABLE credit_cards_billing (
-    bill_id STRING,
+-- create table for customer profiles
+CREATE EXTERNAL TABLE customer_profiles (
     customer_id STRING,
-    month STRING,
-    amount_due FLOAT,
-    amount_paid FLOAT,
-    payment_date DATE,
-    late_days INT,
-    fine FLOAT,
-    total_amount FLOAT,
+    name STRING,
+    gender STRING,
+    age INT,
+    city STRING,
+    account_open_date DATE,
+    product_type STRING,
+    customer_tier STRING,
+    tenure INT,
+    customer_segment STRING,
     processing_time STRING,
     partition_date DATE,
     partition_hour INT
 )
 STORED AS PARQUET
-LOCATION '/stage/credit_cards_billing';
+LOCATION '/stage/customer_profiles';
+
+
 
 
 
