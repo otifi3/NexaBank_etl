@@ -3,3 +3,4 @@ etl_env/
 data/
 tmp/
 venv
+__pycache__/
