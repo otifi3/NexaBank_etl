@@ -15,6 +15,7 @@ class CustomerTransformers(Transformer):
             df = self.add_tenure(df)
             df = self.categorize_customer_segment(df)
             df = self.add_quality(df)
+            
             return df
         except Exception as e:
             self.logger.log('error', f'Error during transformation: {self.file}')

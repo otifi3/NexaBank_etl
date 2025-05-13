@@ -1,90 +1,280 @@
-2025-05-12 23:33:08 [INFO] Processing file: data/incomming_data/2025-05-12/23/loans_time.txt
-2025-05-12 23:33:08 [INFO] loans schema validation passed.
-2025-05-12 23:33:08 [INFO] Transformed DataFrame for loans
-2025-05-12 23:33:09 [INFO] Processing file: data/incomming_data/2025-05-12/23/support_tickets_time.csv
-2025-05-12 23:33:09 [INFO] support_tickets schema validation passed.
-2025-05-12 23:33:09 [INFO] Transformed DataFrame for support_tickets
-2025-05-12 23:33:10 [INFO] Processing file: data/incomming_data/2025-05-12/23/credit_cards_billing_time.csv
-2025-05-12 23:33:10 [INFO] credit_cards_billing schema validation passed.
-2025-05-12 23:33:10 [INFO] Transformed DataFrame for credit_cards_billing
-2025-05-12 23:33:11 [INFO] Processing file: data/incomming_data/2025-05-12/23/transactions_time.json
-2025-05-12 23:33:12 [INFO] transactions schema validation passed.
-2025-05-12 23:33:12 [INFO] Transformed DataFrame for transactions
-2025-05-12 23:33:13 [INFO] Processing file: data/incomming_data/2025-05-12/23/customer_profiles_time.csv
-2025-05-12 23:33:13 [INFO] customer_profiles schema validation passed.
-2025-05-12 23:33:13 [INFO] Transformed DataFrame for customer_profiles
-2025-05-12 23:34:27 [INFO] Processing file: data/incomming_data/2025-05-12/23/credit_cards_billing_time.csv
-2025-05-12 23:34:27 [INFO] credit_cards_billing schema validation passed.
-2025-05-12 23:34:27 [INFO] Transformed DataFrame for credit_cards_billing
-2025-05-12 23:34:27 [INFO] Processing file: data/incomming_data/2025-05-12/23/loans_time.txt
-2025-05-12 23:34:27 [INFO] loans schema validation passed.
-2025-05-12 23:34:27 [INFO] Transformed DataFrame for loans
-2025-05-12 23:34:28 [INFO] Processing file: data/incomming_data/2025-05-12/23/support_tickets_time.csv
-2025-05-12 23:34:29 [INFO] support_tickets schema validation passed.
-2025-05-12 23:34:29 [INFO] Transformed DataFrame for support_tickets
-2025-05-12 23:34:30 [INFO] Processing file: data/incomming_data/2025-05-12/23/transactions_time.json
-2025-05-12 23:34:30 [INFO] transactions schema validation passed.
-2025-05-12 23:34:30 [INFO] Transformed DataFrame for transactions
-2025-05-12 23:34:31 [INFO] Processing file: data/incomming_data/2025-05-12/23/customer_profiles_time.csv
-2025-05-12 23:34:31 [INFO] customer_profiles schema validation passed.
-2025-05-12 23:34:31 [INFO] Transformed DataFrame for customer_profiles
-2025-05-12 23:46:22 [INFO] Processing file: data/incomming_data/2025-05-12/23/loans_time.txt
-2025-05-12 23:46:22 [INFO] loans schema validation passed.
-2025-05-12 23:46:22 [INFO] Transformed DataFrame for loans
-2025-05-12 23:46:23 [INFO] Data successfully written to ./tmp/loans_time.parquet
-2025-05-12 23:46:24 [INFO] Processing file: data/incomming_data/2025-05-12/23/support_tickets_time.csv
-2025-05-12 23:46:24 [INFO] support_tickets schema validation passed.
-2025-05-12 23:46:24 [INFO] Transformed DataFrame for support_tickets
-2025-05-12 23:46:24 [INFO] Data successfully written to ./tmp/support_tickets_time.parquet
-2025-05-12 23:46:25 [INFO] Processing file: data/incomming_data/2025-05-12/23/credit_cards_billing_time.csv
-2025-05-12 23:46:25 [INFO] credit_cards_billing schema validation passed.
-2025-05-12 23:46:25 [INFO] Transformed DataFrame for credit_cards_billing
-2025-05-12 23:46:25 [INFO] Data successfully written to ./tmp/credit_cards_billing_time.parquet
-2025-05-12 23:46:26 [INFO] Processing file: data/incomming_data/2025-05-12/23/transactions_time.json
-2025-05-12 23:46:27 [INFO] transactions schema validation passed.
-2025-05-12 23:46:27 [INFO] Transformed DataFrame for transactions
-2025-05-12 23:46:27 [INFO] Data successfully written to ./tmp/transactions_time.parquet
-2025-05-12 23:46:28 [INFO] Processing file: data/incomming_data/2025-05-12/23/customer_profiles_time.csv
-2025-05-12 23:46:28 [INFO] customer_profiles schema validation passed.
-2025-05-12 23:46:28 [INFO] Transformed DataFrame for customer_profiles
-2025-05-12 23:46:28 [INFO] Data successfully written to ./tmp/customer_profiles_time.parquet
-2025-05-12 23:47:41 [INFO] Processing file: data/incomming_data/2025-05-12/23/loans_time.txt
-2025-05-12 23:47:41 [INFO] loans schema validation passed.
-2025-05-12 23:47:41 [INFO] Transformed DataFrame for loans
-2025-05-12 23:47:41 [INFO] Data successfully written to ./tmp/loans_time.parquet
-2025-05-12 23:47:42 [INFO] Processing file: data/incomming_data/2025-05-12/23/support_tickets_time.csv
-2025-05-12 23:47:42 [INFO] support_tickets schema validation passed.
-2025-05-12 23:47:42 [INFO] Transformed DataFrame for support_tickets
-2025-05-12 23:47:42 [INFO] Data successfully written to ./tmp/support_tickets_time.parquet
-2025-05-12 23:47:43 [INFO] Processing file: data/incomming_data/2025-05-12/23/credit_cards_billing_time.csv
-2025-05-12 23:47:43 [INFO] credit_cards_billing schema validation passed.
-2025-05-12 23:47:43 [INFO] Transformed DataFrame for credit_cards_billing
-2025-05-12 23:47:43 [INFO] Data successfully written to ./tmp/credit_cards_billing_time.parquet
-2025-05-12 23:47:44 [INFO] Processing file: data/incomming_data/2025-05-12/23/transactions_time.json
-2025-05-12 23:47:45 [INFO] transactions schema validation passed.
-2025-05-12 23:47:45 [INFO] Transformed DataFrame for transactions
-2025-05-12 23:47:45 [INFO] Data successfully written to ./tmp/transactions_time.parquet
-2025-05-12 23:47:46 [INFO] Processing file: data/incomming_data/2025-05-12/23/customer_profiles_time.csv
-2025-05-12 23:47:46 [INFO] customer_profiles schema validation passed.
-2025-05-12 23:47:46 [INFO] Transformed DataFrame for customer_profiles
-2025-05-12 23:47:46 [INFO] Data successfully written to ./tmp/customer_profiles_time.parquet
-2025-05-12 23:52:14 [INFO] Processing file: data/incomming_data/2025-05-12/23/loans_time.txt
-2025-05-12 23:52:14 [INFO] loans schema validation passed.
-2025-05-12 23:52:14 [INFO] Transformed DataFrame for loans
-2025-05-12 23:52:14 [INFO] Data successfully written to ./tmp/loans_time.parquet
-2025-05-12 23:52:15 [INFO] Processing file: data/incomming_data/2025-05-12/23/support_tickets_time.csv
-2025-05-12 23:52:15 [INFO] support_tickets schema validation passed.
-2025-05-12 23:52:15 [INFO] Transformed DataFrame for support_tickets
-2025-05-12 23:52:15 [INFO] Data successfully written to ./tmp/support_tickets_time.parquet
-2025-05-12 23:52:16 [INFO] Processing file: data/incomming_data/2025-05-12/23/credit_cards_billing_time.csv
-2025-05-12 23:52:17 [INFO] credit_cards_billing schema validation passed.
-2025-05-12 23:52:17 [INFO] Transformed DataFrame for credit_cards_billing
-2025-05-12 23:52:17 [INFO] Data successfully written to ./tmp/credit_cards_billing_time.parquet
-2025-05-12 23:52:18 [INFO] Processing file: data/incomming_data/2025-05-12/23/transactions_time.json
-2025-05-12 23:52:18 [INFO] transactions schema validation passed.
-2025-05-12 23:52:18 [INFO] Transformed DataFrame for transactions
-2025-05-12 23:52:18 [INFO] Data successfully written to ./tmp/transactions_time.parquet
-2025-05-12 23:52:19 [INFO] Processing file: data/incomming_data/2025-05-12/23/customer_profiles_time.csv
-2025-05-12 23:52:19 [INFO] customer_profiles schema validation passed.
-2025-05-12 23:52:19 [INFO] Transformed DataFrame for customer_profiles
-2025-05-12 23:52:20 [INFO] Data successfully written to ./tmp/customer_profiles_time.parquet
+2025-05-13 12:52:40 [INFO] Processing file: data/incomming_data/2025-05-13/12/loans_time.txt
+2025-05-13 12:52:40 [INFO] Extracted from loans: 
+ columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason'] 
+ rows => 1000 .
+2025-05-13 12:52:40 [INFO] loans schema validation passed.
+2025-05-13 12:52:40 [INFO] Transformed DataFrame for loans: 
+ columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason', 'total_cost', 'processing_time', 'partition_date', 'partition_hour'] 
+ rows => 1000 .
+2025-05-13 12:52:40 [INFO] Data successfully written to ./tmp/loans_time.parquet
+2025-05-13 12:52:40 [INFO] Pipeline completed successfully for file: data/incomming_data/2025-05-13/12/loans_time.txt 
+ **************************************************************************************************** 
+
+2025-05-13 12:52:41 [INFO] Processing file: data/incomming_data/2025-05-13/12/support_tickets_time.csv
+2025-05-13 12:52:41 [INFO] Extracted from support_tickets: 
+ columns => ['ticket_id', 'customer_id', 'complaint_category', 'complaint_date', 'severity'] 
+ rows => 15000 .
+2025-05-13 12:52:41 [INFO] support_tickets schema validation passed.
+2025-05-13 12:52:41 [INFO] Transformed DataFrame for support_tickets: 
+ columns => ['ticket_id', 'customer_id', 'complaint_category', 'complaint_date', 'severity', 'age', 'processing_time', 'partition_date', 'partition_hour'] 
+ rows => 15000 .
+2025-05-13 12:52:41 [INFO] Data successfully written to ./tmp/support_tickets_time.parquet
+2025-05-13 12:52:41 [INFO] Pipeline completed successfully for file: data/incomming_data/2025-05-13/12/support_tickets_time.csv 
+ **************************************************************************************************** 
+
+2025-05-13 12:52:42 [INFO] Processing file: data/incomming_data/2025-05-13/12/credit_cards_billing_time.csv
+2025-05-13 12:52:43 [INFO] Extracted from credit_cards_billing: 
+ columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date'] 
+ rows => 200000 .
+2025-05-13 12:52:43 [INFO] credit_cards_billing schema validation passed.
+2025-05-13 12:52:43 [INFO] Transformed DataFrame for credit_cards_billing: 
+ columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date', 'fully_paid', 'debt', 'due_date', 'late_days', 'fine', 'total_amount', 'processing_time', 'partition_date', 'partition_hour'] 
+ rows => 200000 .
+2025-05-13 12:52:43 [INFO] Data successfully written to ./tmp/credit_cards_billing_time.parquet
+2025-05-13 12:52:43 [INFO] Pipeline completed successfully for file: data/incomming_data/2025-05-13/12/credit_cards_billing_time.csv 
+ **************************************************************************************************** 
+
+2025-05-13 12:52:44 [INFO] Processing file: data/incomming_data/2025-05-13/12/transactions_time.json
+2025-05-13 12:52:44 [INFO] Extracted from transactions: 
+ columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date'] 
+ rows => 100000 .
+2025-05-13 12:52:44 [INFO] transactions schema validation passed.
+2025-05-13 12:52:44 [INFO] Transformed DataFrame for transactions: 
+ columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date', 'cost', 'total_amount', 'processing_time', 'partition_date', 'partition_hour'] 
+ rows => 100000 .
+2025-05-13 12:52:44 [INFO] Data successfully written to ./tmp/transactions_time.parquet
+2025-05-13 12:52:44 [INFO] Pipeline completed successfully for file: data/incomming_data/2025-05-13/12/transactions_time.json 
+ **************************************************************************************************** 
+
+2025-05-13 12:52:45 [INFO] Processing file: data/incomming_data/2025-05-13/12/customer_profiles_time.csv
+2025-05-13 12:52:45 [INFO] Extracted from customer_profiles: 
+ columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier'] 
+ rows => 100000 .
+2025-05-13 12:52:45 [INFO] customer_profiles schema validation passed.
+2025-05-13 12:52:45 [INFO] Transformed DataFrame for customer_profiles: 
+ columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier', 'tenure', 'customer_segment', 'processing_time', 'partition_date', 'partition_hour'] 
+ rows => 100000 .
+2025-05-13 12:52:46 [INFO] Data successfully written to ./tmp/customer_profiles_time.parquet
+2025-05-13 12:52:46 [INFO] Pipeline completed successfully for file: data/incomming_data/2025-05-13/12/customer_profiles_time.csv 
+ **************************************************************************************************** 
+
+2025-05-13 12:54:14 [INFO] Processing file: data/incomming_data/2025-05-13/12/transactions_time.json
+2025-05-13 12:54:14 [INFO] Extracted from transactions: 
+ columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date'] 
+ rows => 100000 .
+2025-05-13 12:54:14 [INFO] transactions schema validation passed.
+2025-05-13 12:54:14 [INFO] Transformed DataFrame for transactions: 
+ columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date', 'cost', 'total_amount', 'processing_time', 'partition_date', 'partition_hour'] 
+ rows => 100000 .
+2025-05-13 12:54:15 [INFO] Data successfully written to ./tmp/transactions_time.parquet
+2025-05-13 12:54:15 [INFO] Pipeline completed successfully for file: transactions 
+ ==========================================================================================================================================================================
+2025-05-13 12:54:15 [INFO] Processing file: data/incomming_data/2025-05-13/12/loans_time.txt
+2025-05-13 12:54:15 [INFO] Extracted from loans: 
+ columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason'] 
+ rows => 1000 .
+2025-05-13 12:54:15 [INFO] loans schema validation passed.
+2025-05-13 12:54:15 [INFO] Transformed DataFrame for loans: 
+ columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason', 'total_cost', 'processing_time', 'partition_date', 'partition_hour'] 
+ rows => 1000 .
+2025-05-13 12:54:15 [INFO] Data successfully written to ./tmp/loans_time.parquet
+2025-05-13 12:54:15 [INFO] Pipeline completed successfully for file: loans 
+ ==========================================================================================================================================================================
+2025-05-13 12:54:16 [INFO] Processing file: data/incomming_data/2025-05-13/12/support_tickets_time.csv
+2025-05-13 12:54:16 [INFO] Extracted from support_tickets: 
+ columns => ['ticket_id', 'customer_id', 'complaint_category', 'complaint_date', 'severity'] 
+ rows => 15000 .
+2025-05-13 12:54:16 [INFO] support_tickets schema validation passed.
+2025-05-13 12:54:16 [INFO] Transformed DataFrame for support_tickets: 
+ columns => ['ticket_id', 'customer_id', 'complaint_category', 'complaint_date', 'severity', 'age', 'processing_time', 'partition_date', 'partition_hour'] 
+ rows => 15000 .
+2025-05-13 12:54:16 [INFO] Data successfully written to ./tmp/support_tickets_time.parquet
+2025-05-13 12:54:16 [INFO] Pipeline completed successfully for file: support_tickets 
+ ==========================================================================================================================================================================
+2025-05-13 12:54:17 [INFO] Processing file: data/incomming_data/2025-05-13/12/credit_cards_billing_time.csv
+2025-05-13 12:54:17 [INFO] Extracted from credit_cards_billing: 
+ columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date'] 
+ rows => 200000 .
+2025-05-13 12:54:17 [INFO] credit_cards_billing schema validation passed.
+2025-05-13 12:54:17 [INFO] Transformed DataFrame for credit_cards_billing: 
+ columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date', 'fully_paid', 'debt', 'due_date', 'late_days', 'fine', 'total_amount', 'processing_time', 'partition_date', 'partition_hour'] 
+ rows => 200000 .
+2025-05-13 12:54:17 [INFO] Data successfully written to ./tmp/credit_cards_billing_time.parquet
+2025-05-13 12:54:17 [INFO] Pipeline completed successfully for file: credit_cards_billing 
+ ==========================================================================================================================================================================
+2025-05-13 12:54:18 [INFO] Processing file: data/incomming_data/2025-05-13/12/customer_profiles_time.csv
+2025-05-13 12:54:18 [INFO] Extracted from customer_profiles: 
+ columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier'] 
+ rows => 100000 .
+2025-05-13 12:54:18 [INFO] customer_profiles schema validation passed.
+2025-05-13 12:54:18 [INFO] Transformed DataFrame for customer_profiles: 
+ columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier', 'tenure', 'customer_segment', 'processing_time', 'partition_date', 'partition_hour'] 
+ rows => 100000 .
+2025-05-13 12:54:18 [INFO] Data successfully written to ./tmp/customer_profiles_time.parquet
+2025-05-13 12:54:18 [INFO] Pipeline completed successfully for file: customer_profiles 
+ ==========================================================================================================================================================================
+2025-05-13 12:56:32 [INFO] Processing file: loans
+2025-05-13 12:56:32 [INFO] Extracted from loans: 
+ columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason'] 
+ rows => 1000
+2025-05-13 12:56:32 [INFO] loans schema validation passed.
+2025-05-13 12:56:32 [INFO] Transformed DataFrame for loans: 
+ columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason', 'total_cost', 'processing_time', 'partition_date', 'partition_hour'] 
+ rows => 1000
+2025-05-13 12:56:32 [INFO] Data successfully written to ./tmp/loans_time.parquet
+2025-05-13 12:56:32 [INFO] Pipeline completed successfully for file: loans 
+ ========================================================================================================================================================================================================
+2025-05-13 12:56:33 [INFO] Processing file: support_tickets
+2025-05-13 12:56:33 [INFO] Extracted from support_tickets: 
+ columns => ['ticket_id', 'customer_id', 'complaint_category', 'complaint_date', 'severity'] 
+ rows => 15000
+2025-05-13 12:56:33 [INFO] support_tickets schema validation passed.
+2025-05-13 12:56:33 [INFO] Transformed DataFrame for support_tickets: 
+ columns => ['ticket_id', 'customer_id', 'complaint_category', 'complaint_date', 'severity', 'age', 'processing_time', 'partition_date', 'partition_hour'] 
+ rows => 15000
+2025-05-13 12:56:33 [INFO] Data successfully written to ./tmp/support_tickets_time.parquet
+2025-05-13 12:56:33 [INFO] Pipeline completed successfully for file: support_tickets 
+ ========================================================================================================================================================================================================
+2025-05-13 12:56:34 [INFO] Processing file: credit_cards_billing
+2025-05-13 12:56:35 [INFO] Extracted from credit_cards_billing: 
+ columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date'] 
+ rows => 200000
+2025-05-13 12:56:35 [INFO] credit_cards_billing schema validation passed.
+2025-05-13 12:56:35 [INFO] Transformed DataFrame for credit_cards_billing: 
+ columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date', 'fully_paid', 'debt', 'due_date', 'late_days', 'fine', 'total_amount', 'processing_time', 'partition_date', 'partition_hour'] 
+ rows => 200000
+2025-05-13 12:56:35 [INFO] Data successfully written to ./tmp/credit_cards_billing_time.parquet
+2025-05-13 12:56:35 [INFO] Pipeline completed successfully for file: credit_cards_billing 
+ ========================================================================================================================================================================================================
+2025-05-13 12:56:36 [INFO] Processing file: transactions
+2025-05-13 12:56:37 [INFO] Extracted from transactions: 
+ columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date'] 
+ rows => 100000
+2025-05-13 12:56:37 [INFO] transactions schema validation passed.
+2025-05-13 12:56:37 [INFO] Transformed DataFrame for transactions: 
+ columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date', 'cost', 'total_amount', 'processing_time', 'partition_date', 'partition_hour'] 
+ rows => 100000
+2025-05-13 12:56:37 [INFO] Data successfully written to ./tmp/transactions_time.parquet
+2025-05-13 12:56:37 [INFO] Pipeline completed successfully for file: transactions 
+ ========================================================================================================================================================================================================
+2025-05-13 12:56:38 [INFO] Processing file: customer_profiles
+2025-05-13 12:56:38 [INFO] Extracted from customer_profiles: 
+ columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier'] 
+ rows => 100000
+2025-05-13 12:56:38 [INFO] customer_profiles schema validation passed.
+2025-05-13 12:56:38 [INFO] Transformed DataFrame for customer_profiles: 
+ columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier', 'tenure', 'customer_segment', 'processing_time', 'partition_date', 'partition_hour'] 
+ rows => 100000
+2025-05-13 12:56:38 [INFO] Data successfully written to ./tmp/customer_profiles_time.parquet
+2025-05-13 12:56:38 [INFO] Pipeline completed successfully for file: customer_profiles 
+ ========================================================================================================================================================================================================
+2025-05-13 12:59:14 [INFO] Processing file: loans
+2025-05-13 12:59:14 [INFO] Extracted loans: 
+ columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason'] 
+ rows => 1000
+2025-05-13 12:59:14 [INFO] loans schema validation passed.
+2025-05-13 12:59:14 [INFO] Transformed loans: 
+ columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason', 'total_cost', 'processing_time', 'partition_date', 'partition_hour'] 
+ rows => 1000
+2025-05-13 12:59:14 [INFO] Data successfully written to ./tmp/loans_time.parquet
+2025-05-13 12:59:14 [INFO] Pipeline completed successfully for file: loans 
+ ========================================================================================================================================================================================================
+2025-05-13 12:59:15 [INFO] Processing file: support_tickets
+2025-05-13 12:59:15 [INFO] Extracted support_tickets: 
+ columns => ['ticket_id', 'customer_id', 'complaint_category', 'complaint_date', 'severity'] 
+ rows => 15000
+2025-05-13 12:59:15 [INFO] support_tickets schema validation passed.
+2025-05-13 12:59:15 [INFO] Transformed support_tickets: 
+ columns => ['ticket_id', 'customer_id', 'complaint_category', 'complaint_date', 'severity', 'age', 'processing_time', 'partition_date', 'partition_hour'] 
+ rows => 15000
+2025-05-13 12:59:15 [INFO] Data successfully written to ./tmp/support_tickets_time.parquet
+2025-05-13 12:59:15 [INFO] Pipeline completed successfully for file: support_tickets 
+ ========================================================================================================================================================================================================
+2025-05-13 12:59:16 [INFO] Processing file: credit_cards_billing
+2025-05-13 12:59:16 [INFO] Extracted credit_cards_billing: 
+ columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date'] 
+ rows => 200000
+2025-05-13 12:59:16 [INFO] credit_cards_billing schema validation passed.
+2025-05-13 12:59:16 [INFO] Transformed credit_cards_billing: 
+ columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date', 'fully_paid', 'debt', 'due_date', 'late_days', 'fine', 'total_amount', 'processing_time', 'partition_date', 'partition_hour'] 
+ rows => 200000
+2025-05-13 12:59:16 [INFO] Data successfully written to ./tmp/credit_cards_billing_time.parquet
+2025-05-13 12:59:16 [INFO] Pipeline completed successfully for file: credit_cards_billing 
+ ========================================================================================================================================================================================================
+2025-05-13 12:59:17 [INFO] Processing file: transactions
+2025-05-13 12:59:18 [INFO] Extracted transactions: 
+ columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date'] 
+ rows => 100000
+2025-05-13 12:59:18 [INFO] transactions schema validation passed.
+2025-05-13 12:59:18 [INFO] Transformed transactions: 
+ columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date', 'cost', 'total_amount', 'processing_time', 'partition_date', 'partition_hour'] 
+ rows => 100000
+2025-05-13 12:59:18 [INFO] Data successfully written to ./tmp/transactions_time.parquet
+2025-05-13 12:59:18 [INFO] Pipeline completed successfully for file: transactions 
+ ========================================================================================================================================================================================================
+2025-05-13 12:59:19 [INFO] Processing file: customer_profiles
+2025-05-13 12:59:19 [INFO] Extracted customer_profiles: 
+ columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier'] 
+ rows => 100000
+2025-05-13 12:59:19 [INFO] customer_profiles schema validation passed.
+2025-05-13 12:59:19 [INFO] Transformed customer_profiles: 
+ columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier', 'tenure', 'customer_segment', 'processing_time', 'partition_date', 'partition_hour'] 
+ rows => 100000
+2025-05-13 12:59:19 [INFO] Data successfully written to ./tmp/customer_profiles_time.parquet
+2025-05-13 12:59:19 [INFO] Pipeline completed successfully for file: customer_profiles 
+ ========================================================================================================================================================================================================
+2025-05-13 13:00:52 [INFO] Processing file: loans
+2025-05-13 13:00:52 [INFO] Extracted loans: 
+ columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason'] 
+ rows => 1000
+2025-05-13 13:00:52 [INFO] loans schema validation passed.
+2025-05-13 13:00:52 [INFO] Transformed loans: 
+ columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason', 'total_cost', 'processing_time', 'partition_date', 'partition_hour'] 
+ rows => 1000
+2025-05-13 13:00:52 [INFO] Data successfully written to ./tmp/loans_time.parquet
+2025-05-13 13:00:52 [INFO] Pipeline completed successfully for file: loans 
+ ========================================================================================================================================================================================================
+2025-05-13 13:00:53 [INFO] Processing file: support_tickets
+2025-05-13 13:00:53 [INFO] Extracted support_tickets: 
+ columns => ['ticket_id', 'customer_id', 'complaint_category', 'complaint_date', 'severity'] 
+ rows => 15000
+2025-05-13 13:00:53 [INFO] support_tickets schema validation passed.
+2025-05-13 13:00:53 [INFO] Transformed support_tickets: 
+ columns => ['ticket_id', 'customer_id', 'complaint_category', 'complaint_date', 'severity', 'age', 'processing_time', 'partition_date', 'partition_hour'] 
+ rows => 15000
+2025-05-13 13:00:53 [INFO] Data successfully written to ./tmp/support_tickets_time.parquet
+2025-05-13 13:00:53 [INFO] Pipeline completed successfully for file: support_tickets 
+ ========================================================================================================================================================================================================
+2025-05-13 13:00:54 [INFO] Processing file: credit_cards_billing
+2025-05-13 13:00:55 [INFO] Extracted credit_cards_billing: 
+ columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date'] 
+ rows => 200000
+2025-05-13 13:00:55 [INFO] credit_cards_billing schema validation passed.
+2025-05-13 13:00:55 [INFO] Transformed credit_cards_billing: 
+ columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date', 'fully_paid', 'debt', 'due_date', 'late_days', 'fine', 'total_amount', 'processing_time', 'partition_date', 'partition_hour'] 
+ rows => 200000
+2025-05-13 13:00:55 [INFO] Data successfully written to ./tmp/credit_cards_billing_time.parquet
+2025-05-13 13:00:55 [INFO] Pipeline completed successfully for file: credit_cards_billing 
+ ========================================================================================================================================================================================================
+2025-05-13 13:00:56 [INFO] Processing file: transactions
+2025-05-13 13:00:57 [INFO] Extracted transactions: 
+ columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date'] 
+ rows => 100000
+2025-05-13 13:00:57 [INFO] transactions schema validation passed.
+2025-05-13 13:00:57 [INFO] Transformed transactions: 
+ columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date', 'cost', 'total_amount', 'processing_time', 'partition_date', 'partition_hour'] 
+ rows => 100000
+2025-05-13 13:00:57 [INFO] Data successfully written to ./tmp/transactions_time.parquet
+2025-05-13 13:00:57 [INFO] Pipeline completed successfully for file: transactions 
+ ========================================================================================================================================================================================================
+2025-05-13 13:00:58 [INFO] Processing file: customer_profiles
+2025-05-13 13:00:58 [INFO] Extracted customer_profiles: 
+ columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier'] 
+ rows => 100000
+2025-05-13 13:00:58 [INFO] customer_profiles schema validation passed.
+2025-05-13 13:00:58 [INFO] Transformed customer_profiles: 
+ columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier', 'tenure', 'customer_segment', 'processing_time', 'partition_date', 'partition_hour'] 
+ rows => 100000
+2025-05-13 13:00:58 [INFO] Data successfully written to ./tmp/customer_profiles_time.parquet
+2025-05-13 13:00:58 [INFO] Pipeline completed successfully for file: customer_profiles 
+ ========================================================================================================================================================================================================

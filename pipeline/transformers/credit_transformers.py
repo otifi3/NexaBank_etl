@@ -18,6 +18,7 @@ class CreditTransformers(Transformer):
             df = self.add_fine_column(df)
             df = self.add_total_amount_column(df)
             df = self.add_quality(df)
+            
             return df
         except Exception as e:
             self.logger.log('error', f'Error during transformation: {self.file}')

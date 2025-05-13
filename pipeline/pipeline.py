@@ -55,14 +55,16 @@ class Pipeline:
         """
         Process the file using the appropriate extractor, transformer, validator, and loader.
         """
-        # start processing
-        self.logger.log('info', f"Processing file: {file}")
+        
 
         # Extract file extension
         file_extension = file.split('.')[-1].lower()
 
         # Extract file type from the file name (without extension)
         file_type = file.split('/')[-1].rsplit('_', 1)[0]
+
+        # start processing
+        self.logger.log('info', f"Processing file: {file_type}")
 
         try:
             # Dynamically select the correct extractor based on the file extension
@@ -75,6 +77,9 @@ class Pipeline:
                 df = extractor.extract(file, '|')
             else:
                 df = extractor.extract(file)
+
+            self.logger.log('info', f'Extracted {file_type}: \n columns => {list(df.columns)} \n rows => {df.shape[0]}')       
+
             # Validate the DataFrame
             self.validator.validate(df, file_type)
             
@@ -82,13 +87,14 @@ class Pipeline:
             transformer = self.transformers.get(file_type)
             if transformer:
                 df = transformer.transform(df)
-                self.logger.log('info', f"Transformed DataFrame for {file_type}")
+                self.logger.log('info', f"Transformed {file_type}: \n columns => {list(df.columns)} \n rows => {df.shape[0]}")
             else:
                 self.logger.log('error', f"Unsupported file type for transformation: {file_type}")
                 raise ValueError(f"Unsupported file type for transformation: {file_type}")
             
             self.parquet_loader.load(df, f'{file.split("/")[-1].split(".")[0]}')
             # self.hdfs_loader.load(df, f'/staging/{file.split("/")[-1].split(".")[0]}')
+            self.logger.log('info', f"Pipeline completed successfully for file: {file_type} \n {'='*250}")
 
         except:
             self.notifier.notify(os.getenv('TO_EMAIL_1'))

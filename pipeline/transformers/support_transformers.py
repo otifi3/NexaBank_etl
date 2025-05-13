@@ -14,6 +14,7 @@ class SupportTransformers(Transformer):
             df = self.convert_complaint_date(df)
             df = self.calculate_age(df)
             df = self.add_quality(df)
+            
             return df
         except Exception as e:
             self.logger.log('error', f'Error during transformation: {self.file}')

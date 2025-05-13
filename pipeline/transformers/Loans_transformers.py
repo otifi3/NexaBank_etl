@@ -17,6 +17,7 @@ class LoanTransformers(Transformer):
             df = self.calculate_total_cost(df)
             df = self.encrypt_loan_reason(df)
             df = self.add_quality(df)
+            
             return df
         except Exception as e:
             self.logger.log('error', f'Error during transformation: {self.file}')

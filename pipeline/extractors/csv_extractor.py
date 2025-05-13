@@ -15,7 +15,7 @@ class CSVExtractor:
         """
         # Read the CSV file into a DataFrame
         try:
-            df = pd.read_csv(file_path)        
+            df = pd.read_csv(file_path) 
             return df
         except:
             self.logger.log('error', f'Wrong file path {file_path}')
