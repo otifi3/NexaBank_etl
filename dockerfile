@@ -11,3 +11,6 @@ RUN pip3 install psycopg2-binary pandas pyarrow hdfs sqlalchemy numpy python-dot
 WORKDIR /home/hadoop
 
 USER hadoop
+
+# ENTRYPOINT python script to start the pipeline
+# CMD ["python3", "/home/hadoop/src/main.py"]
