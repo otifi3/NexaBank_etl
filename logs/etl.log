@@ -1,643 +1,142 @@
-2025-05-13 13:40:47 [INFO] Processing file: loans
-2025-05-13 13:40:47 [INFO] Extracted loans: 
-columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason'] 
-rows => 1000
-2025-05-13 13:40:47 [INFO] loans schema validation passed.
-2025-05-13 13:40:47 [INFO] Transformed loans: 
-columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason', 'total_cost', 'processing_time', 'partition_date', 'partition_hour'] 
-rows => 1000
-2025-05-13 13:40:47 [INFO] Data successfully written to ./tmp/loans_time.parquet
-2025-05-13 13:40:49 [ERROR] Failed to upload file to HDFS: Command '['hdfs', 'dfs', '-put', '/home/hadoop/tmp/loans_time.parquet', '/stage/loans']' returned non-zero exit status 1.
-2025-05-13 13:40:49 [INFO] Local file /home/hadoop/tmp/loans_time.parquet removed after upload.
-2025-05-13 13:40:49 [ERROR] Pipeline failed for file: loans with error: 
-Failed to upload file to HDFS: Command '['hdfs', 'dfs', '-put', '/home/hadoop/tmp/loans_time.parquet', '/stage/loans']' returned non-zero exit status 1. 
+2025-05-14 09:24:47 [ERROR] Failed to upload file to HDFS: 
+2025-05-14 09:22:09,193 WARN hdfs.DFSUtilClient: Namenode for hadoop-cluster remains unresolved for ID nn1. Check your hdfs-site.xml file to ensure namenodes are configured properly.
+2025-05-14 09:22:09,802 WARN hdfs.DFSUtilClient: Namenode for hadoop-cluster remains unresolved for ID nn2. Check your hdfs-site.xml file to ensure namenodes are configured properly.
+2025-05-14 09:22:10,030 WARN hdfs.DFSUtilClient: Namenode for hadoop-cluster remains unresolved for ID nn3. Check your hdfs-site.xml file to ensure namenodes are configured properly.
+2025-05-14 09:22:13,444 INFO retry.RetryInvocationHandler: java.net.UnknownHostException: Invalid host name: local host is: "438ef43eee61/172.24.0.2"; destination host is: "m1":8020; java.net.UnknownHostException: Invalid host name: local host is: "438ef43eee61/172.24.0.2"; destination host is: "m1":8020; java.net.UnknownHostException; For more details see:  http://wiki.apache.org/hadoop/UnknownHost; For more details see:  http://wiki.apache.org/hadoop/UnknownHost, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over m1:8020 after 3 failover attempts. Trying to failover after sleeping for 2033ms. Current retry count: 3.
+2025-05-14 09:22:15,481 INFO retry.RetryInvocationHandler: java.net.UnknownHostException: Invalid host name: local host is: "438ef43eee61/172.24.0.2"; destination host is: "m2":8020; java.net.UnknownHostException: Invalid host name: local host is: "438ef43eee61/172.24.0.2"; destination host is: "m2":8020; java.net.UnknownHostException; For more details see:  http://wiki.apache.org/hadoop/UnknownHost; For more details see:  http://wiki.apache.org/hadoop/UnknownHost, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over m2:8020 after 4 failover attempts. Trying to failover after sleeping for 8311ms. Current retry count: 4.
+2025-05-14 09:22:24,027 INFO retry.RetryInvocationHandler: java.net.UnknownHostException: Invalid host name: local host is: "438ef43eee61/172.24.0.2"; destination host is: "m3":8020; java.net.UnknownHostException: Invalid host name: local host is: "438ef43eee61/172.24.0.2"; destination host is: "m3":8020; java.net.UnknownHostException; For more details see:  http://wiki.apache.org/hadoop/UnknownHost; For more details see:  http://wiki.apache.org/hadoop/UnknownHost, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over m3:8020 after 5 failover attempts. Trying to failover after sleeping for 14631ms. Current retry count: 5.
+2025-05-14 09:22:38,858 INFO retry.RetryInvocationHandler: java.net.UnknownHostException: Invalid host name: local host is: "438ef43eee61/172.24.0.2"; destination host is: "m1":8020; java.net.UnknownHostException: Invalid host name: local host is: "438ef43eee61/172.24.0.2"; destination host is: "m1":8020; java.net.UnknownHostException; For more details see:  http://wiki.apache.org/hadoop/UnknownHost; For more details see:  http://wiki.apache.org/hadoop/UnknownHost, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over m1:8020 after 6 failover attempts. Trying to failover after sleeping for 14650ms. Current retry count: 6.
+2025-05-14 09:22:53,695 INFO retry.RetryInvocationHandler: java.net.UnknownHostException: Invalid host name: local host is: "438ef43eee61/172.24.0.2"; destination host is: "m2":8020; java.net.UnknownHostException: Invalid host name: local host is: "438ef43eee61/172.24.0.2"; destination host is: "m2":8020; java.net.UnknownHostException; For more details see:  http://wiki.apache.org/hadoop/UnknownHost; For more details see:  http://wiki.apache.org/hadoop/UnknownHost, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over m2:8020 after 7 failover attempts. Trying to failover after sleeping for 13484ms. Current retry count: 7.
+2025-05-14 09:23:07,580 INFO retry.RetryInvocationHandler: java.net.UnknownHostException: Invalid host name: local host is: "438ef43eee61/172.24.0.2"; destination host is: "m3":8020; java.net.UnknownHostException: Invalid host name: local host is: "438ef43eee61/172.24.0.2"; destination host is: "m3":8020; java.net.UnknownHostException; For more details see:  http://wiki.apache.org/hadoop/UnknownHost; For more details see:  http://wiki.apache.org/hadoop/UnknownHost, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over m3:8020 after 8 failover attempts. Trying to failover after sleeping for 13105ms. Current retry count: 8.
+2025-05-14 09:23:20,784 INFO retry.RetryInvocationHandler: java.net.UnknownHostException: Invalid host name: local host is: "438ef43eee61/172.24.0.2"; destination host is: "m1":8020; java.net.UnknownHostException: Invalid host name: local host is: "438ef43eee61/172.24.0.2"; destination host is: "m1":8020; java.net.UnknownHostException; For more details see:  http://wiki.apache.org/hadoop/UnknownHost; For more details see:  http://wiki.apache.org/hadoop/UnknownHost, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over m1:8020 after 9 failover attempts. Trying to failover after sleeping for 17307ms. Current retry count: 9.
+2025-05-14 09:23:38,192 INFO retry.RetryInvocationHandler: java.net.UnknownHostException: Invalid host name: local host is: "438ef43eee61/172.24.0.2"; destination host is: "m2":8020; java.net.UnknownHostException: Invalid host name: local host is: "438ef43eee61/172.24.0.2"; destination host is: "m2":8020; java.net.UnknownHostException; For more details see:  http://wiki.apache.org/hadoop/UnknownHost; For more details see:  http://wiki.apache.org/hadoop/UnknownHost, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over m2:8020 after 10 failover attempts. Trying to failover after sleeping for 13461ms. Current retry count: 10.
+2025-05-14 09:23:51,756 INFO retry.RetryInvocationHandler: java.net.UnknownHostException: Invalid host name: local host is: "438ef43eee61/172.24.0.2"; destination host is: "m3":8020; java.net.UnknownHostException: Invalid host name: local host is: "438ef43eee61/172.24.0.2"; destination host is: "m3":8020; java.net.UnknownHostException; For more details see:  http://wiki.apache.org/hadoop/UnknownHost; For more details see:  http://wiki.apache.org/hadoop/UnknownHost, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over m3:8020 after 11 failover attempts. Trying to failover after sleeping for 14570ms. Current retry count: 11.
+2025-05-14 09:24:06,538 INFO retry.RetryInvocationHandler: java.net.UnknownHostException: Invalid host name: local host is: "438ef43eee61/172.24.0.2"; destination host is: "m1":8020; java.net.UnknownHostException: Invalid host name: local host is: "438ef43eee61/172.24.0.2"; destination host is: "m1":8020; java.net.UnknownHostException; For more details see:  http://wiki.apache.org/hadoop/UnknownHost; For more details see:  http://wiki.apache.org/hadoop/UnknownHost, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over m1:8020 after 12 failover attempts. Trying to failover after sleeping for 21232ms. Current retry count: 12.
+2025-05-14 09:24:27,876 INFO retry.RetryInvocationHandler: java.net.UnknownHostException: Invalid host name: local host is: "438ef43eee61/172.24.0.2"; destination host is: "m2":8020; java.net.UnknownHostException: Invalid host name: local host is: "438ef43eee61/172.24.0.2"; destination host is: "m2":8020; java.net.UnknownHostException; For more details see:  http://wiki.apache.org/hadoop/UnknownHost; For more details see:  http://wiki.apache.org/hadoop/UnknownHost, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over m2:8020 after 13 failover attempts. Trying to failover after sleeping for 9791ms. Current retry count: 13.
+2025-05-14 09:24:37,821 INFO retry.RetryInvocationHandler: java.net.UnknownHostException: Invalid host name: local host is: "438ef43eee61/172.24.0.2"; destination host is: "m3":8020; java.net.UnknownHostException: Invalid host name: local host is: "438ef43eee61/172.24.0.2"; destination host is: "m3":8020; java.net.UnknownHostException; For more details see:  http://wiki.apache.org/hadoop/UnknownHost; For more details see:  http://wiki.apache.org/hadoop/UnknownHost, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over m3:8020 after 14 failover attempts. Trying to failover after sleeping for 8713ms. Current retry count: 14.
+put: Invalid host name: local host is: "438ef43eee61/172.24.0.2"; destination host is: "m1":8020; java.net.UnknownHostException: Invalid host name: local host is: "438ef43eee61/172.24.0.2"; destination host is: "m1":8020; java.net.UnknownHostException; For more details see:  http://wiki.apache.org/hadoop/UnknownHost; For more details see:  http://wiki.apache.org/hadoop/UnknownHost
+
+2025-05-14 09:24:47 [INFO] Local file /home/hadoop/tmp/loans_time.parquet removed after upload.
+2025-05-14 09:24:47 [ERROR] Pipeline failed for file: loans, HDFS upload failed.
  ==========================================================================================================================================================================================================================================================
-2025-05-13 13:40:52 [INFO] Processing file: support_tickets
-2025-05-13 13:40:52 [INFO] Extracted support_tickets: 
+2025-05-14 09:24:50 [INFO] Processing file: support_tickets
+2025-05-14 09:24:50 [INFO] Extracted support_tickets: 
 columns => ['ticket_id', 'customer_id', 'complaint_category', 'complaint_date', 'severity'] 
 rows => 15000
-2025-05-13 13:40:52 [INFO] support_tickets schema validation passed.
-2025-05-13 13:40:52 [ERROR] Error during transformation: support_data
-2025-05-13 13:40:52 [ERROR] Pipeline failed for file: support_tickets with error: 
-support_data Transformation Failed 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 13:50:40 [INFO] Processing file: customer_profiles
-2025-05-13 13:50:40 [INFO] Extracted customer_profiles: 
-columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier'] 
-rows => 100000
-2025-05-13 13:50:40 [INFO] customer_profiles schema validation passed.
-2025-05-13 13:50:40 [INFO] Transformed customer_profiles: 
-columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier', 'tenure', 'customer_segment', 'processing_time', 'partition_date', 'partition_hour'] 
-rows => 100000
-2025-05-13 13:50:40 [INFO] Data successfully written to ./tmp/customer_profiles_time1.parquet
-2025-05-13 13:50:40 [INFO] Pipeline completed successfully for file: customer_profiles 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 13:50:41 [INFO] Processing file: loans
-2025-05-13 13:50:41 [INFO] Extracted loans: 
-columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason'] 
-rows => 1000
-2025-05-13 13:50:41 [INFO] loans schema validation passed.
-2025-05-13 13:50:41 [INFO] Transformed loans: 
-columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason', 'total_cost', 'processing_time', 'partition_date', 'partition_hour'] 
-rows => 1000
-2025-05-13 13:50:41 [INFO] Data successfully written to ./tmp/loans_time1.parquet
-2025-05-13 13:50:41 [INFO] Pipeline completed successfully for file: loans 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 13:50:42 [INFO] Processing file: credit_cards_billing
-2025-05-13 13:50:43 [INFO] Extracted credit_cards_billing: 
-columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date'] 
-rows => 200000
-2025-05-13 13:50:43 [INFO] credit_cards_billing schema validation passed.
-2025-05-13 13:50:43 [INFO] Transformed credit_cards_billing: 
-columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date', 'fully_paid', 'debt', 'due_date', 'late_days', 'fine', 'total_amount', 'processing_time', 'partition_date', 'partition_hour'] 
-rows => 200000
-2025-05-13 13:50:43 [INFO] Data successfully written to ./tmp/credit_cards_billing_time1.parquet
-2025-05-13 13:50:43 [INFO] Pipeline completed successfully for file: credit_cards_billing 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 13:50:44 [INFO] Processing file: support_tickets
-2025-05-13 13:50:44 [INFO] Extracted support_tickets: 
-columns => ['ticket_id', 'customer_id', 'complaint_category', 'complaint_date', 'severity'] 
-rows => 15000
-2025-05-13 13:50:44 [INFO] support_tickets schema validation passed.
-2025-05-13 13:50:44 [ERROR] Error during transformation: support_data
-2025-05-13 13:50:44 [ERROR] Pipeline failed for file: support_tickets with error: 
-support_data Transformation Failed 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 13:50:49 [INFO] Processing file: transactions
-2025-05-13 13:50:49 [INFO] Extracted transactions: 
-columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date'] 
-rows => 100000
-2025-05-13 13:50:49 [INFO] transactions schema validation passed.
-2025-05-13 13:50:49 [INFO] Transformed transactions: 
-columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date', 'cost', 'total_amount', 'processing_time', 'partition_date', 'partition_hour'] 
-rows => 100000
-2025-05-13 13:50:49 [INFO] Data successfully written to ./tmp/transactions_time1.parquet
-2025-05-13 13:50:49 [INFO] Pipeline completed successfully for file: transactions 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 13:54:40 [INFO] Processing file: customer_profiles
-2025-05-13 13:54:40 [INFO] Extracted customer_profiles: 
-columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier'] 
-rows => 100000
-2025-05-13 13:54:40 [INFO] customer_profiles schema validation passed.
-2025-05-13 13:54:40 [INFO] Transformed customer_profiles: 
-columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier', 'tenure', 'customer_segment', 'processing_time', 'partition_date', 'partition_hour'] 
-rows => 100000
-2025-05-13 13:54:40 [INFO] Data successfully written to ./tmp/customer_profiles_time1.parquet
-2025-05-13 13:54:40 [INFO] Pipeline completed successfully for file: customer_profiles 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 13:54:41 [INFO] Processing file: loans
-2025-05-13 13:54:41 [INFO] Extracted loans: 
-columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason'] 
-rows => 1000
-2025-05-13 13:54:41 [INFO] loans schema validation passed.
-2025-05-13 13:54:41 [INFO] Transformed loans: 
-columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason', 'total_cost', 'processing_time', 'partition_date', 'partition_hour'] 
-rows => 1000
-2025-05-13 13:54:41 [INFO] Data successfully written to ./tmp/loans_time1.parquet
-2025-05-13 13:54:41 [INFO] Pipeline completed successfully for file: loans 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 13:54:42 [INFO] Processing file: credit_cards_billing
-2025-05-13 13:54:43 [INFO] Extracted credit_cards_billing: 
-columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date'] 
-rows => 200000
-2025-05-13 13:54:43 [INFO] credit_cards_billing schema validation passed.
-2025-05-13 13:54:43 [INFO] Transformed credit_cards_billing: 
-columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date', 'fully_paid', 'debt', 'due_date', 'late_days', 'fine', 'total_amount', 'processing_time', 'partition_date', 'partition_hour'] 
-rows => 200000
-2025-05-13 13:54:43 [INFO] Data successfully written to ./tmp/credit_cards_billing_time1.parquet
-2025-05-13 13:54:43 [INFO] Pipeline completed successfully for file: credit_cards_billing 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 13:54:44 [INFO] Processing file: support_tickets
-2025-05-13 13:54:44 [INFO] Extracted support_tickets: 
-columns => ['ticket_id', 'customer_id', 'complaint_category', 'complaint_date', 'severity'] 
-rows => 15000
-2025-05-13 13:54:44 [INFO] support_tickets schema validation passed.
-2025-05-13 13:54:44 [ERROR] Error during transformation: support_data
-2025-05-13 13:54:44 [ERROR] Pipeline failed for file: support_tickets with error: 
-support_data Transformation Failed 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 13:54:47 [INFO] Processing file: transactions
-2025-05-13 13:54:47 [INFO] Extracted transactions: 
-columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date'] 
-rows => 100000
-2025-05-13 13:54:47 [INFO] transactions schema validation passed.
-2025-05-13 13:54:47 [INFO] Transformed transactions: 
-columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date', 'cost', 'total_amount', 'processing_time', 'partition_date', 'partition_hour'] 
-rows => 100000
-2025-05-13 13:54:47 [INFO] Data successfully written to ./tmp/transactions_time1.parquet
-2025-05-13 13:54:47 [INFO] Pipeline completed successfully for file: transactions 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 13:55:52 [INFO] Processing file: customer_profiles
-2025-05-13 13:55:52 [INFO] Extracted customer_profiles: 
-columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier'] 
-rows => 100000
-2025-05-13 13:55:52 [INFO] customer_profiles schema validation passed.
-2025-05-13 13:55:52 [INFO] Transformed customer_profiles: 
-columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier', 'tenure', 'customer_segment', 'processing_time', 'partition_date', 'partition_hour'] 
-rows => 100000
-2025-05-13 13:55:52 [INFO] Data successfully written to ./tmp/customer_profiles_time1.parquet
-2025-05-13 13:55:52 [INFO] Pipeline completed successfully for file: customer_profiles 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 13:55:53 [INFO] Processing file: loans
-2025-05-13 13:55:53 [INFO] Extracted loans: 
-columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason'] 
-rows => 1000
-2025-05-13 13:55:53 [INFO] loans schema validation passed.
-2025-05-13 13:55:53 [INFO] Transformed loans: 
-columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason', 'total_cost', 'processing_time', 'partition_date', 'partition_hour'] 
-rows => 1000
-2025-05-13 13:55:53 [INFO] Data successfully written to ./tmp/loans_time1.parquet
-2025-05-13 13:55:53 [INFO] Pipeline completed successfully for file: loans 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 13:55:54 [INFO] Processing file: credit_cards_billing
-2025-05-13 13:55:55 [INFO] Extracted credit_cards_billing: 
-columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date'] 
-rows => 200000
-2025-05-13 13:55:55 [INFO] credit_cards_billing schema validation passed.
-2025-05-13 13:55:55 [INFO] Transformed credit_cards_billing: 
-columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date', 'fully_paid', 'debt', 'due_date', 'late_days', 'fine', 'total_amount', 'processing_time', 'partition_date', 'partition_hour'] 
-rows => 200000
-2025-05-13 13:55:55 [INFO] Data successfully written to ./tmp/credit_cards_billing_time1.parquet
-2025-05-13 13:55:55 [INFO] Pipeline completed successfully for file: credit_cards_billing 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 13:55:56 [INFO] Processing file: support_tickets
-2025-05-13 13:55:56 [INFO] Extracted support_tickets: 
-columns => ['ticket_id', 'customer_id', 'complaint_category', 'complaint_date', 'severity'] 
-rows => 15000
-2025-05-13 13:55:56 [INFO] support_tickets schema validation passed.
-2025-05-13 13:55:56 [ERROR] Error during transformation: support_data
-2025-05-13 13:55:56 [ERROR] Pipeline failed for file: support_tickets with error: 
-support_data Transformation Failed 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 13:55:59 [INFO] Processing file: transactions
-2025-05-13 13:56:00 [INFO] Extracted transactions: 
-columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date'] 
-rows => 100000
-2025-05-13 13:56:00 [INFO] transactions schema validation passed.
-2025-05-13 13:56:00 [INFO] Transformed transactions: 
-columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date', 'cost', 'total_amount', 'processing_time', 'partition_date', 'partition_hour'] 
-rows => 100000
-2025-05-13 13:56:00 [INFO] Data successfully written to ./tmp/transactions_time1.parquet
-2025-05-13 13:56:00 [INFO] Pipeline completed successfully for file: transactions 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 13:58:49 [INFO] Processing file: customer_profiles
-2025-05-13 13:58:49 [INFO] Extracted customer_profiles: 
-columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier'] 
-rows => 100000
-2025-05-13 13:58:49 [INFO] customer_profiles schema validation passed.
-2025-05-13 13:58:50 [INFO] Transformed customer_profiles: 
-columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier', 'tenure', 'customer_segment', 'processing_time', 'partition_date', 'partition_hour'] 
-rows => 100000
-2025-05-13 13:58:50 [INFO] Data successfully written to ./tmp/customer_profiles_time1.parquet
-2025-05-13 13:58:50 [INFO] Pipeline completed successfully for file: customer_profiles 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 13:58:51 [INFO] Processing file: loans
-2025-05-13 13:58:51 [INFO] Extracted loans: 
-columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason'] 
-rows => 1000
-2025-05-13 13:58:51 [INFO] loans schema validation passed.
-2025-05-13 13:58:51 [INFO] Transformed loans: 
-columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason', 'total_cost', 'processing_time', 'partition_date', 'partition_hour'] 
-rows => 1000
-2025-05-13 13:58:51 [INFO] Data successfully written to ./tmp/loans_time1.parquet
-2025-05-13 13:58:51 [INFO] Pipeline completed successfully for file: loans 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 13:58:52 [INFO] Processing file: credit_cards_billing
-2025-05-13 13:58:52 [INFO] Extracted credit_cards_billing: 
-columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date'] 
-rows => 200000
-2025-05-13 13:58:52 [INFO] credit_cards_billing schema validation passed.
-2025-05-13 13:58:52 [INFO] Transformed credit_cards_billing: 
-columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date', 'fully_paid', 'debt', 'due_date', 'late_days', 'fine', 'total_amount', 'processing_time', 'partition_date', 'partition_hour'] 
-rows => 200000
-2025-05-13 13:58:52 [INFO] Data successfully written to ./tmp/credit_cards_billing_time1.parquet
-2025-05-13 13:58:52 [INFO] Pipeline completed successfully for file: credit_cards_billing 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 13:58:53 [INFO] Processing file: support_tickets
-2025-05-13 13:58:53 [INFO] Extracted support_tickets: 
-columns => ['ticket_id', 'customer_id', 'complaint_category', 'complaint_date', 'severity'] 
-rows => 15000
-2025-05-13 13:58:53 [INFO] support_tickets schema validation passed.
-2025-05-13 13:58:53 [ERROR] Error during transformation: support_data
-2025-05-13 13:58:53 [ERROR] Pipeline failed for file: support_tickets with error: 
-support_data Transformation Failed 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 13:59:00 [INFO] Processing file: transactions
-2025-05-13 13:59:00 [INFO] Extracted transactions: 
-columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date'] 
-rows => 100000
-2025-05-13 13:59:00 [INFO] transactions schema validation passed.
-2025-05-13 13:59:00 [INFO] Transformed transactions: 
-columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date', 'cost', 'total_amount', 'processing_time', 'partition_date', 'partition_hour'] 
-rows => 100000
-2025-05-13 13:59:00 [INFO] Data successfully written to ./tmp/transactions_time1.parquet
-2025-05-13 13:59:00 [INFO] Pipeline completed successfully for file: transactions 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 14:00:39 [INFO] Processing file: customer_profiles
-2025-05-13 14:00:39 [INFO] Extracted customer_profiles: 
-columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier'] 
-rows => 100000
-2025-05-13 14:00:39 [INFO] customer_profiles schema validation passed.
-2025-05-13 14:00:39 [INFO] Transformed customer_profiles: 
-columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier', 'tenure', 'customer_segment', 'processing_time', 'partition_date', 'partition_hour'] 
-rows => 100000
-2025-05-13 14:00:39 [INFO] Data successfully written to ./tmp/customer_profiles_time1.parquet
-2025-05-13 14:00:39 [INFO] Pipeline completed successfully for file: customer_profiles 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 14:00:40 [INFO] Processing file: loans
-2025-05-13 14:00:40 [INFO] Extracted loans: 
-columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason'] 
-rows => 1000
-2025-05-13 14:00:40 [INFO] loans schema validation passed.
-2025-05-13 14:00:40 [INFO] Transformed loans: 
-columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason', 'total_cost', 'processing_time', 'partition_date', 'partition_hour'] 
-rows => 1000
-2025-05-13 14:00:40 [INFO] Data successfully written to ./tmp/loans_time1.parquet
-2025-05-13 14:00:40 [INFO] Pipeline completed successfully for file: loans 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 14:00:41 [INFO] Processing file: credit_cards_billing
-2025-05-13 14:00:42 [INFO] Extracted credit_cards_billing: 
-columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date'] 
-rows => 200000
-2025-05-13 14:00:42 [INFO] credit_cards_billing schema validation passed.
-2025-05-13 14:00:42 [INFO] Transformed credit_cards_billing: 
-columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date', 'fully_paid', 'debt', 'due_date', 'late_days', 'fine', 'total_amount', 'processing_time', 'partition_date', 'partition_hour'] 
-rows => 200000
-2025-05-13 14:00:42 [INFO] Data successfully written to ./tmp/credit_cards_billing_time1.parquet
-2025-05-13 14:00:42 [INFO] Pipeline completed successfully for file: credit_cards_billing 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 14:00:43 [INFO] Processing file: support_tickets
-2025-05-13 14:00:43 [INFO] Extracted support_tickets: 
-columns => ['ticket_id', 'customer_id', 'complaint_category', 'complaint_date', 'severity'] 
-rows => 15000
-2025-05-13 14:00:43 [INFO] support_tickets schema validation passed.
-2025-05-13 14:00:43 [ERROR] Error during transformation: support_data
-2025-05-13 14:00:43 [ERROR] Pipeline failed for file: support_tickets with error: 
-support_data Transformation Failed 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 14:00:46 [INFO] Processing file: transactions
-2025-05-13 14:00:47 [INFO] Extracted transactions: 
-columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date'] 
-rows => 100000
-2025-05-13 14:00:47 [INFO] transactions schema validation passed.
-2025-05-13 14:00:47 [INFO] Transformed transactions: 
-columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date', 'cost', 'total_amount', 'processing_time', 'partition_date', 'partition_hour'] 
-rows => 100000
-2025-05-13 14:00:47 [INFO] Data successfully written to ./tmp/transactions_time1.parquet
-2025-05-13 14:00:47 [INFO] Pipeline completed successfully for file: transactions 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 14:01:45 [INFO] Processing file: customer_profiles
-2025-05-13 14:01:45 [INFO] Extracted customer_profiles: 
-columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier'] 
-rows => 100000
-2025-05-13 14:01:45 [INFO] customer_profiles schema validation passed.
-2025-05-13 14:01:45 [INFO] Transformed customer_profiles: 
-columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier', 'tenure', 'customer_segment', 'processing_time', 'partition_date', 'partition_hour'] 
-rows => 100000
-2025-05-13 14:01:45 [INFO] Data successfully written to ./tmp/customer_profiles_time1.parquet
-2025-05-13 14:01:45 [INFO] Pipeline completed successfully for file: customer_profiles 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 14:01:46 [INFO] Processing file: loans
-2025-05-13 14:01:46 [INFO] Extracted loans: 
-columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason'] 
-rows => 1000
-2025-05-13 14:01:46 [INFO] loans schema validation passed.
-2025-05-13 14:01:46 [INFO] Transformed loans: 
-columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason', 'total_cost', 'processing_time', 'partition_date', 'partition_hour'] 
-rows => 1000
-2025-05-13 14:01:46 [INFO] Data successfully written to ./tmp/loans_time1.parquet
-2025-05-13 14:01:46 [INFO] Pipeline completed successfully for file: loans 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 14:01:47 [INFO] Processing file: credit_cards_billing
-2025-05-13 14:01:48 [INFO] Extracted credit_cards_billing: 
-columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date'] 
-rows => 200000
-2025-05-13 14:01:48 [INFO] credit_cards_billing schema validation passed.
-2025-05-13 14:01:48 [INFO] Transformed credit_cards_billing: 
-columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date', 'fully_paid', 'debt', 'due_date', 'late_days', 'fine', 'total_amount', 'processing_time', 'partition_date', 'partition_hour'] 
-rows => 200000
-2025-05-13 14:01:48 [INFO] Data successfully written to ./tmp/credit_cards_billing_time1.parquet
-2025-05-13 14:01:48 [INFO] Pipeline completed successfully for file: credit_cards_billing 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 14:01:49 [INFO] Processing file: support_tickets
-2025-05-13 14:01:49 [INFO] Extracted support_tickets: 
-columns => ['ticket_id', 'customer_id', 'complaint_category', 'complaint_date', 'severity'] 
-rows => 15000
-2025-05-13 14:01:49 [INFO] support_tickets schema validation passed.
-2025-05-13 14:01:49 [ERROR] Error during transformation: support_data
-2025-05-13 14:01:49 [ERROR] Pipeline failed for file: support_tickets with error: 
-support_data Transformation Failed 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 14:01:52 [INFO] Processing file: transactions
-2025-05-13 14:01:53 [INFO] Extracted transactions: 
-columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date'] 
-rows => 100000
-2025-05-13 14:01:53 [INFO] transactions schema validation passed.
-2025-05-13 14:01:53 [INFO] Transformed transactions: 
-columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date', 'cost', 'total_amount', 'processing_time', 'partition_date', 'partition_hour'] 
-rows => 100000
-2025-05-13 14:01:53 [INFO] Data successfully written to ./tmp/transactions_time1.parquet
-2025-05-13 14:01:53 [INFO] Pipeline completed successfully for file: transactions 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 14:03:39 [INFO] Processing file: customer_profiles
-2025-05-13 14:03:39 [INFO] Extracted customer_profiles: 
-columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier'] 
-rows => 100000
-2025-05-13 14:03:39 [INFO] customer_profiles schema validation passed.
-2025-05-13 14:03:40 [INFO] Transformed customer_profiles: 
-columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier', 'tenure', 'customer_segment', 'processing_time', 'partition_date', 'partition_hour'] 
-rows => 100000
-2025-05-13 14:03:40 [INFO] Data successfully written to ./tmp/customer_profiles_time1.parquet
-2025-05-13 14:03:40 [INFO] Pipeline completed successfully for file: customer_profiles 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 14:03:41 [INFO] Processing file: loans
-2025-05-13 14:03:41 [INFO] Extracted loans: 
-columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason'] 
-rows => 1000
-2025-05-13 14:03:41 [INFO] loans schema validation passed.
-2025-05-13 14:03:41 [INFO] Transformed loans: 
-columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason', 'total_cost', 'processing_time', 'partition_date', 'partition_hour'] 
-rows => 1000
-2025-05-13 14:03:41 [INFO] Data successfully written to ./tmp/loans_time1.parquet
-2025-05-13 14:03:41 [INFO] Pipeline completed successfully for file: loans 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 14:03:42 [INFO] Processing file: credit_cards_billing
-2025-05-13 14:03:42 [INFO] Extracted credit_cards_billing: 
-columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date'] 
-rows => 200000
-2025-05-13 14:03:42 [INFO] credit_cards_billing schema validation passed.
-2025-05-13 14:03:43 [INFO] Transformed credit_cards_billing: 
-columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date', 'fully_paid', 'debt', 'due_date', 'late_days', 'fine', 'total_amount', 'processing_time', 'partition_date', 'partition_hour'] 
-rows => 200000
-2025-05-13 14:03:43 [INFO] Data successfully written to ./tmp/credit_cards_billing_time1.parquet
-2025-05-13 14:03:43 [INFO] Pipeline completed successfully for file: credit_cards_billing 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 14:03:44 [INFO] Processing file: support_tickets
-2025-05-13 14:03:44 [INFO] Extracted support_tickets: 
-columns => ['ticket_id', 'customer_id', 'complaint_category', 'complaint_date', 'severity'] 
-rows => 15000
-2025-05-13 14:03:44 [INFO] support_tickets schema validation passed.
-2025-05-13 14:03:44 [ERROR] Error during transformation: support_data
-2025-05-13 14:03:44 [ERROR] Pipeline failed for file: support_tickets with error: 
-support_data Transformation Failed 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 14:03:49 [INFO] Processing file: transactions
-2025-05-13 14:03:50 [INFO] Extracted transactions: 
-columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date'] 
-rows => 100000
-2025-05-13 14:03:50 [INFO] transactions schema validation passed.
-2025-05-13 14:03:50 [INFO] Transformed transactions: 
-columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date', 'cost', 'total_amount', 'processing_time', 'partition_date', 'partition_hour'] 
-rows => 100000
-2025-05-13 14:03:50 [INFO] Data successfully written to ./tmp/transactions_time1.parquet
-2025-05-13 14:03:50 [INFO] Pipeline completed successfully for file: transactions 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 14:06:47 [INFO] Processing file: customer_profiles
-2025-05-13 14:06:47 [INFO] Extracted customer_profiles: 
-columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier'] 
-rows => 100000
-2025-05-13 14:06:47 [INFO] customer_profiles schema validation passed.
-2025-05-13 14:06:47 [INFO] Transformed customer_profiles: 
-columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier', 'tenure', 'customer_segment', 'processing_time', 'partition_date', 'partition_hour'] 
-rows => 100000
-2025-05-13 14:06:47 [INFO] Data successfully written to ./tmp/customer_profiles_time1.parquet
-2025-05-13 14:06:47 [INFO] Pipeline completed successfully for file: customer_profiles 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 14:06:48 [INFO] Processing file: loans
-2025-05-13 14:06:48 [INFO] Extracted loans: 
-columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason'] 
-rows => 1000
-2025-05-13 14:06:48 [INFO] loans schema validation passed.
-2025-05-13 14:06:48 [INFO] Transformed loans: 
-columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason', 'total_cost', 'processing_time', 'partition_date', 'partition_hour'] 
-rows => 1000
-2025-05-13 14:06:48 [INFO] Data successfully written to ./tmp/loans_time1.parquet
-2025-05-13 14:06:48 [INFO] Pipeline completed successfully for file: loans 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 14:06:49 [INFO] Processing file: credit_cards_billing
-2025-05-13 14:06:50 [INFO] Extracted credit_cards_billing: 
-columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date'] 
-rows => 200000
-2025-05-13 14:06:50 [INFO] credit_cards_billing schema validation passed.
-2025-05-13 14:06:50 [INFO] Transformed credit_cards_billing: 
-columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date', 'fully_paid', 'debt', 'due_date', 'late_days', 'fine', 'total_amount', 'processing_time', 'partition_date', 'partition_hour'] 
-rows => 200000
-2025-05-13 14:06:50 [INFO] Data successfully written to ./tmp/credit_cards_billing_time1.parquet
-2025-05-13 14:06:50 [INFO] Pipeline completed successfully for file: credit_cards_billing 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 14:06:51 [INFO] Processing file: support_tickets
-2025-05-13 14:06:51 [INFO] Extracted support_tickets: 
-columns => ['ticket_id', 'customer_id', 'complaint_category', 'complaint_date', 'severity'] 
-rows => 15000
-2025-05-13 14:06:51 [INFO] support_tickets schema validation passed.
-2025-05-13 14:06:51 [INFO] Transformed support_tickets: 
+2025-05-14 09:24:50 [INFO] support_tickets schema validation passed.
+2025-05-14 09:24:50 [INFO] Transformed support_tickets: 
 columns => ['ticket_id', 'customer_id', 'complaint_category', 'complaint_date', 'severity', 'age', 'processing_time', 'partition_date', 'partition_hour'] 
 rows => 15000
-2025-05-13 14:06:51 [INFO] Data successfully written to ./tmp/support_tickets_time1.parquet
-2025-05-13 14:06:51 [INFO] Pipeline completed successfully for file: support_tickets 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 14:06:52 [INFO] Processing file: transactions
-2025-05-13 14:06:52 [INFO] Extracted transactions: 
-columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date'] 
-rows => 100000
-2025-05-13 14:06:52 [INFO] transactions schema validation passed.
-2025-05-13 14:06:53 [INFO] Transformed transactions: 
-columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date', 'cost', 'total_amount', 'processing_time', 'partition_date', 'partition_hour'] 
-rows => 100000
-2025-05-13 14:06:53 [INFO] Data successfully written to ./tmp/transactions_time1.parquet
-2025-05-13 14:06:53 [INFO] Pipeline completed successfully for file: transactions 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 14:11:16 [INFO] Processing file: customer_profiles
-2025-05-13 14:11:17 [INFO] Extracted customer_profiles: 
-columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier'] 
-rows => 100000
-2025-05-13 14:11:17 [INFO] customer_profiles schema validation passed.
-2025-05-13 14:11:17 [INFO] Transformed customer_profiles: 
-columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier', 'tenure', 'customer_segment', 'processing_time', 'partition_date', 'partition_hour'] 
-rows => 100000
-2025-05-13 14:11:17 [INFO] Data successfully written to ./tmp/customer_profiles_time1.parquet
-2025-05-13 14:11:20 [INFO] File successfully uploaded to HDFS at /stage/customer_profiles
-2025-05-13 14:11:20 [INFO] Local file /home/hadoop/tmp/customer_profiles_time1.parquet removed after upload.
-2025-05-13 14:11:20 [INFO] Pipeline completed successfully for file: customer_profiles 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 14:11:21 [INFO] Processing file: loans
-2025-05-13 14:11:21 [INFO] Extracted loans: 
-columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason'] 
-rows => 1000
-2025-05-13 14:11:21 [INFO] loans schema validation passed.
-2025-05-13 14:11:21 [INFO] Transformed loans: 
-columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason', 'total_cost', 'processing_time', 'partition_date', 'partition_hour'] 
-rows => 1000
-2025-05-13 14:11:21 [INFO] Data successfully written to ./tmp/loans_time1.parquet
-2025-05-13 14:11:24 [INFO] File successfully uploaded to HDFS at /stage/loans
-2025-05-13 14:11:24 [INFO] Local file /home/hadoop/tmp/loans_time1.parquet removed after upload.
-2025-05-13 14:11:24 [INFO] Pipeline completed successfully for file: loans 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 14:11:25 [INFO] Processing file: credit_cards_billing
-2025-05-13 14:11:26 [INFO] Extracted credit_cards_billing: 
-columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date'] 
-rows => 200000
-2025-05-13 14:11:26 [INFO] credit_cards_billing schema validation passed.
-2025-05-13 14:11:26 [INFO] Transformed credit_cards_billing: 
-columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date', 'fully_paid', 'debt', 'due_date', 'late_days', 'fine', 'total_amount', 'processing_time', 'partition_date', 'partition_hour'] 
-rows => 200000
-2025-05-13 14:11:26 [INFO] Data successfully written to ./tmp/credit_cards_billing_time1.parquet
-2025-05-13 14:11:29 [INFO] File successfully uploaded to HDFS at /stage/credit_cards_billing
-2025-05-13 14:11:29 [INFO] Local file /home/hadoop/tmp/credit_cards_billing_time1.parquet removed after upload.
-2025-05-13 14:11:29 [INFO] Pipeline completed successfully for file: credit_cards_billing 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 14:11:30 [INFO] Processing file: support_tickets
-2025-05-13 14:11:30 [INFO] Extracted support_tickets: 
+2025-05-14 09:24:50 [INFO] Data successfully written to ./tmp/support_tickets_time.parquet
+2025-05-14 09:34:51 [INFO] Processing file: support_tickets
+2025-05-14 09:34:51 [INFO] Extracted support_tickets: 
 columns => ['ticket_id', 'customer_id', 'complaint_category', 'complaint_date', 'severity'] 
 rows => 15000
-2025-05-13 14:11:30 [INFO] support_tickets schema validation passed.
-2025-05-13 14:11:30 [INFO] Transformed support_tickets: 
+2025-05-14 09:34:51 [INFO] support_tickets schema validation passed.
+2025-05-14 09:34:51 [INFO] Transformed support_tickets: 
 columns => ['ticket_id', 'customer_id', 'complaint_category', 'complaint_date', 'severity', 'age', 'processing_time', 'partition_date', 'partition_hour'] 
 rows => 15000
-2025-05-13 14:11:30 [INFO] Data successfully written to ./tmp/support_tickets_time1.parquet
-2025-05-13 14:11:32 [INFO] File successfully uploaded to HDFS at /stage/support_tickets
-2025-05-13 14:11:32 [INFO] Local file /home/hadoop/tmp/support_tickets_time1.parquet removed after upload.
-2025-05-13 14:11:32 [INFO] Pipeline completed successfully for file: support_tickets 
+2025-05-14 09:34:51 [INFO] Data successfully written to ./tmp/support_tickets_time.parquet
+2025-05-14 09:34:56 [ERROR] Failed to upload file to HDFS: Command '['hdfs', 'dfs', '-put', '/home/hadoop/tmp/support_tickets_time.parquet', '/stage/support_tickets']' timed out after 5 seconds
+2025-05-14 09:34:56 [INFO] Local file /home/hadoop/tmp/support_tickets_time.parquet removed after upload.
+2025-05-14 09:34:56 [ERROR] Pipeline failed for file: support_tickets with error: 
+Failed to upload file to HDFS: Command '['hdfs', 'dfs', '-put', '/home/hadoop/tmp/support_tickets_time.parquet', '/stage/support_tickets']' timed out after 5 seconds 
  ==========================================================================================================================================================================================================================================================
-2025-05-13 14:11:33 [INFO] Processing file: transactions
-2025-05-13 14:11:33 [INFO] Extracted transactions: 
+2025-05-14 09:34:59 [INFO] Processing file: credit_cards_billing
+2025-05-14 09:35:00 [INFO] Extracted credit_cards_billing: 
+columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date'] 
+rows => 200000
+2025-05-14 09:35:00 [INFO] credit_cards_billing schema validation passed.
+2025-05-14 09:35:00 [INFO] Transformed credit_cards_billing: 
+columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date', 'fully_paid', 'debt', 'due_date', 'late_days', 'fine', 'total_amount', 'processing_time', 'partition_date', 'partition_hour'] 
+rows => 200000
+2025-05-14 09:35:00 [INFO] Data successfully written to ./tmp/credit_cards_billing_time.parquet
+2025-05-14 09:35:05 [ERROR] Failed to upload file to HDFS: Command '['hdfs', 'dfs', '-put', '/home/hadoop/tmp/credit_cards_billing_time.parquet', '/stage/credit_cards_billing']' timed out after 5 seconds
+2025-05-14 09:35:05 [INFO] Local file /home/hadoop/tmp/credit_cards_billing_time.parquet removed after upload.
+2025-05-14 09:35:05 [ERROR] Pipeline failed for file: credit_cards_billing with error: 
+Failed to upload file to HDFS: Command '['hdfs', 'dfs', '-put', '/home/hadoop/tmp/credit_cards_billing_time.parquet', '/stage/credit_cards_billing']' timed out after 5 seconds 
+ ==========================================================================================================================================================================================================================================================
+2025-05-14 09:35:07 [INFO] Processing file: transactions
+2025-05-14 09:35:08 [INFO] Extracted transactions: 
 columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date'] 
 rows => 100000
-2025-05-13 14:11:33 [INFO] transactions schema validation passed.
-2025-05-13 14:11:33 [INFO] Transformed transactions: 
+2025-05-14 09:35:08 [INFO] transactions schema validation passed.
+2025-05-14 09:35:08 [INFO] Transformed transactions: 
 columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date', 'cost', 'total_amount', 'processing_time', 'partition_date', 'partition_hour'] 
 rows => 100000
-2025-05-13 14:11:33 [INFO] Data successfully written to ./tmp/transactions_time1.parquet
-2025-05-13 14:11:36 [INFO] File successfully uploaded to HDFS at /stage/transactions
-2025-05-13 14:11:36 [INFO] Local file /home/hadoop/tmp/transactions_time1.parquet removed after upload.
-2025-05-13 14:11:36 [INFO] Pipeline completed successfully for file: transactions 
+2025-05-14 09:35:08 [INFO] Data successfully written to ./tmp/transactions_time.parquet
+2025-05-14 09:35:13 [ERROR] Failed to upload file to HDFS: Command '['hdfs', 'dfs', '-put', '/home/hadoop/tmp/transactions_time.parquet', '/stage/transactions']' timed out after 5 seconds
+2025-05-14 09:35:13 [INFO] Local file /home/hadoop/tmp/transactions_time.parquet removed after upload.
+2025-05-14 09:35:13 [ERROR] Pipeline failed for file: transactions with error: 
+Failed to upload file to HDFS: Command '['hdfs', 'dfs', '-put', '/home/hadoop/tmp/transactions_time.parquet', '/stage/transactions']' timed out after 5 seconds 
  ==========================================================================================================================================================================================================================================================
-2025-05-13 14:37:38 [INFO] Processing file: customer_profiles
-2025-05-13 14:37:38 [INFO] Extracted customer_profiles: 
+2025-05-14 09:35:16 [INFO] Processing file: customer_profiles
+2025-05-14 09:35:17 [INFO] Extracted customer_profiles: 
 columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier'] 
 rows => 100000
-2025-05-13 14:37:38 [INFO] customer_profiles schema validation passed.
-2025-05-13 14:37:38 [INFO] Transformed customer_profiles: 
+2025-05-14 09:35:17 [INFO] customer_profiles schema validation passed.
+2025-05-14 09:35:17 [INFO] Transformed customer_profiles: 
 columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier', 'tenure', 'customer_segment', 'processing_time', 'partition_date', 'partition_hour'] 
 rows => 100000
-2025-05-13 14:37:38 [INFO] Data successfully written to ./tmp/customer_profiles_time1.parquet
-2025-05-13 14:37:38 [INFO] Pipeline completed successfully for file: customer_profiles 
+2025-05-14 09:35:17 [INFO] Data successfully written to ./tmp/customer_profiles_time.parquet
+2025-05-14 09:35:22 [ERROR] Failed to upload file to HDFS: Command '['hdfs', 'dfs', '-put', '/home/hadoop/tmp/customer_profiles_time.parquet', '/stage/customer_profiles']' timed out after 5 seconds
+2025-05-14 09:35:22 [INFO] Local file /home/hadoop/tmp/customer_profiles_time.parquet removed after upload.
+2025-05-14 09:35:22 [ERROR] Pipeline failed for file: customer_profiles with error: 
+Failed to upload file to HDFS: Command '['hdfs', 'dfs', '-put', '/home/hadoop/tmp/customer_profiles_time.parquet', '/stage/customer_profiles']' timed out after 5 seconds 
  ==========================================================================================================================================================================================================================================================
-2025-05-13 14:37:39 [INFO] Processing file: loans
-2025-05-13 14:37:39 [INFO] Extracted loans: 
+2025-05-14 09:37:54 [INFO] Processing file: loans
+2025-05-14 09:37:54 [INFO] Extracted loans: 
 columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason'] 
 rows => 1000
-2025-05-13 14:37:39 [INFO] loans schema validation passed.
-2025-05-13 14:37:40 [INFO] Transformed loans: 
+2025-05-14 09:37:54 [INFO] loans schema validation passed.
+2025-05-14 09:37:54 [INFO] Transformed loans: 
 columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason', 'age', 'total_cost', 'processing_time', 'partition_date', 'partition_hour'] 
 rows => 1000
-2025-05-13 14:37:40 [INFO] Data successfully written to ./tmp/loans_time1.parquet
-2025-05-13 14:37:40 [INFO] Pipeline completed successfully for file: loans 
+2025-05-14 09:37:54 [INFO] Data successfully written to ./tmp/loans_time.parquet
+2025-05-14 09:37:59 [ERROR] Failed to upload file to HDFS: Command '['hdfs', 'dfs', '-put', '/home/hadoop/tmp/loans_time.parquet', '/stage/loans']' timed out after 5 seconds
+2025-05-14 09:37:59 [ERROR] Local file /home/hadoop/tmp/loans_time.parquet removed after failed upload.
+2025-05-14 09:37:59 [ERROR] Pipeline failed for file: loans with error: 
+Failed to upload file to HDFS: Command '['hdfs', 'dfs', '-put', '/home/hadoop/tmp/loans_time.parquet', '/stage/loans']' timed out after 5 seconds 
  ==========================================================================================================================================================================================================================================================
-2025-05-13 14:37:41 [INFO] Processing file: credit_cards_billing
-2025-05-13 14:37:41 [INFO] Extracted credit_cards_billing: 
-columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date'] 
-rows => 200000
-2025-05-13 14:37:41 [INFO] credit_cards_billing schema validation passed.
-2025-05-13 14:37:41 [ERROR] Error during transformation: credit_card
-2025-05-13 14:37:41 [ERROR] Pipeline failed for file: credit_cards_billing with error: 
-credit_card Transformation Failed 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 14:37:45 [INFO] Processing file: support_tickets
-2025-05-13 14:37:45 [INFO] Extracted support_tickets: 
+2025-05-14 09:38:03 [INFO] Processing file: support_tickets
+2025-05-14 09:38:03 [INFO] Extracted support_tickets: 
 columns => ['ticket_id', 'customer_id', 'complaint_category', 'complaint_date', 'severity'] 
 rows => 15000
-2025-05-13 14:37:45 [INFO] support_tickets schema validation passed.
-2025-05-13 14:37:45 [INFO] Transformed support_tickets: 
+2025-05-14 09:38:03 [INFO] support_tickets schema validation passed.
+2025-05-14 09:38:03 [INFO] Transformed support_tickets: 
 columns => ['ticket_id', 'customer_id', 'complaint_category', 'complaint_date', 'severity', 'age', 'processing_time', 'partition_date', 'partition_hour'] 
 rows => 15000
-2025-05-13 14:37:45 [INFO] Data successfully written to ./tmp/support_tickets_time1.parquet
-2025-05-13 14:37:45 [INFO] Pipeline completed successfully for file: support_tickets 
+2025-05-14 09:38:03 [INFO] Data successfully written to ./tmp/support_tickets_time.parquet
+2025-05-14 09:38:08 [ERROR] Failed to upload file to HDFS: Command '['hdfs', 'dfs', '-put', '/home/hadoop/tmp/support_tickets_time.parquet', '/stage/support_tickets']' timed out after 5 seconds
+2025-05-14 09:38:08 [ERROR] Local file /home/hadoop/tmp/support_tickets_time.parquet removed after failed upload.
+2025-05-14 09:38:08 [ERROR] Pipeline failed for file: support_tickets with error: 
+Failed to upload file to HDFS: Command '['hdfs', 'dfs', '-put', '/home/hadoop/tmp/support_tickets_time.parquet', '/stage/support_tickets']' timed out after 5 seconds 
  ==========================================================================================================================================================================================================================================================
-2025-05-13 14:37:46 [INFO] Processing file: transactions
-2025-05-13 14:37:46 [INFO] Extracted transactions: 
+2025-05-14 09:38:11 [INFO] Processing file: transactions
+2025-05-14 09:38:11 [INFO] Extracted transactions: 
 columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date'] 
 rows => 100000
-2025-05-13 14:37:46 [INFO] transactions schema validation passed.
-2025-05-13 14:37:46 [INFO] Transformed transactions: 
+2025-05-14 09:38:11 [INFO] transactions schema validation passed.
+2025-05-14 09:38:11 [INFO] Transformed transactions: 
 columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date', 'cost', 'total_amount', 'processing_time', 'partition_date', 'partition_hour'] 
 rows => 100000
-2025-05-13 14:37:47 [INFO] Data successfully written to ./tmp/transactions_time1.parquet
-2025-05-13 14:37:47 [INFO] Pipeline completed successfully for file: transactions 
+2025-05-14 09:38:11 [INFO] Data successfully written to ./tmp/transactions_time.parquet
+2025-05-14 09:38:16 [ERROR] Failed to upload file to HDFS: Command '['hdfs', 'dfs', '-put', '/home/hadoop/tmp/transactions_time.parquet', '/stage/transactions']' timed out after 5 seconds
+2025-05-14 09:38:16 [ERROR] Local file /home/hadoop/tmp/transactions_time.parquet removed after failed upload.
+2025-05-14 09:38:16 [ERROR] Pipeline failed for file: transactions with error: 
+Failed to upload file to HDFS: Command '['hdfs', 'dfs', '-put', '/home/hadoop/tmp/transactions_time.parquet', '/stage/transactions']' timed out after 5 seconds 
  ==========================================================================================================================================================================================================================================================
-2025-05-13 14:42:44 [INFO] Processing file: credit_cards_billing
-2025-05-13 14:42:44 [INFO] Extracted credit_cards_billing: 
-columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date'] 
-rows => 200000
-2025-05-13 14:42:44 [INFO] credit_cards_billing schema validation passed.
-2025-05-13 14:42:44 [INFO] Transformed credit_cards_billing: 
-columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date', 'fully_paid', 'debt', 'due_date', 'late_days', 'fine', 'total_amount', 'processing_time', 'partition_date', 'partition_hour'] 
-rows => 200000
-2025-05-13 14:42:45 [INFO] Data successfully written to ./tmp/credit_cards_billing_time1.parquet
-2025-05-13 14:42:45 [INFO] Pipeline completed successfully for file: credit_cards_billing 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 14:48:46 [INFO] Processing file: customer_profiles
-2025-05-13 14:48:46 [INFO] Extracted customer_profiles: 
+2025-05-14 09:38:20 [INFO] Processing file: customer_profiles
+2025-05-14 09:38:20 [INFO] Extracted customer_profiles: 
 columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier'] 
 rows => 100000
-2025-05-13 14:48:46 [INFO] customer_profiles schema validation passed.
-2025-05-13 14:48:46 [INFO] Transformed customer_profiles: 
+2025-05-14 09:38:20 [INFO] customer_profiles schema validation passed.
+2025-05-14 09:38:20 [INFO] Transformed customer_profiles: 
 columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier', 'tenure', 'customer_segment', 'processing_time', 'partition_date', 'partition_hour'] 
 rows => 100000
-2025-05-13 14:48:47 [INFO] Data successfully written to ./tmp/customer_profiles_time1.parquet
-2025-05-13 14:48:49 [INFO] File successfully uploaded to HDFS at /stage/customer_profiles
-2025-05-13 14:48:49 [INFO] Local file /home/hadoop/tmp/customer_profiles_time1.parquet removed after upload.
-2025-05-13 14:48:49 [INFO] Pipeline completed successfully for file: customer_profiles 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 14:48:50 [INFO] Processing file: loans
-2025-05-13 14:48:50 [INFO] Extracted loans: 
-columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason'] 
-rows => 1000
-2025-05-13 14:48:50 [INFO] loans schema validation passed.
-2025-05-13 14:48:50 [INFO] Transformed loans: 
-columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason', 'age', 'total_cost', 'processing_time', 'partition_date', 'partition_hour'] 
-rows => 1000
-2025-05-13 14:48:50 [INFO] Data successfully written to ./tmp/loans_time1.parquet
-2025-05-13 14:48:52 [INFO] File successfully uploaded to HDFS at /stage/loans
-2025-05-13 14:48:52 [INFO] Local file /home/hadoop/tmp/loans_time1.parquet removed after upload.
-2025-05-13 14:48:52 [INFO] Pipeline completed successfully for file: loans 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 14:48:53 [INFO] Processing file: credit_cards_billing
-2025-05-13 14:48:54 [INFO] Extracted credit_cards_billing: 
-columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date'] 
-rows => 200000
-2025-05-13 14:48:54 [INFO] credit_cards_billing schema validation passed.
-2025-05-13 14:48:54 [INFO] Transformed credit_cards_billing: 
-columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date', 'fully_paid', 'debt', 'due_date', 'late_days', 'fine', 'total_amount', 'processing_time', 'partition_date', 'partition_hour'] 
-rows => 200000
-2025-05-13 14:48:54 [INFO] Data successfully written to ./tmp/credit_cards_billing_time1.parquet
-2025-05-13 14:48:56 [INFO] File successfully uploaded to HDFS at /stage/credit_cards_billing
-2025-05-13 14:48:56 [INFO] Local file /home/hadoop/tmp/credit_cards_billing_time1.parquet removed after upload.
-2025-05-13 14:48:56 [INFO] Pipeline completed successfully for file: credit_cards_billing 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 14:48:57 [INFO] Processing file: support_tickets
-2025-05-13 14:48:57 [INFO] Extracted support_tickets: 
-columns => ['ticket_id', 'customer_id', 'complaint_category', 'complaint_date', 'severity'] 
-rows => 15000
-2025-05-13 14:48:57 [INFO] support_tickets schema validation passed.
-2025-05-13 14:48:57 [INFO] Transformed support_tickets: 
-columns => ['ticket_id', 'customer_id', 'complaint_category', 'complaint_date', 'severity', 'age', 'processing_time', 'partition_date', 'partition_hour'] 
-rows => 15000
-2025-05-13 14:48:57 [INFO] Data successfully written to ./tmp/support_tickets_time1.parquet
-2025-05-13 14:49:00 [INFO] File successfully uploaded to HDFS at /stage/support_tickets
-2025-05-13 14:49:00 [INFO] Local file /home/hadoop/tmp/support_tickets_time1.parquet removed after upload.
-2025-05-13 14:49:00 [INFO] Pipeline completed successfully for file: support_tickets 
- ==========================================================================================================================================================================================================================================================
-2025-05-13 14:49:01 [INFO] Processing file: transactions
-2025-05-13 14:49:02 [INFO] Extracted transactions: 
-columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date'] 
-rows => 100000
-2025-05-13 14:49:02 [INFO] transactions schema validation passed.
-2025-05-13 14:49:02 [INFO] Transformed transactions: 
-columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date', 'cost', 'total_amount', 'processing_time', 'partition_date', 'partition_hour'] 
-rows => 100000
-2025-05-13 14:49:02 [INFO] Data successfully written to ./tmp/transactions_time1.parquet
-2025-05-13 14:49:04 [INFO] File successfully uploaded to HDFS at /stage/transactions
-2025-05-13 14:49:04 [INFO] Local file /home/hadoop/tmp/transactions_time1.parquet removed after upload.
-2025-05-13 14:49:04 [INFO] Pipeline completed successfully for file: transactions 
+2025-05-14 09:38:20 [INFO] Data successfully written to ./tmp/customer_profiles_time.parquet
+2025-05-14 09:38:25 [ERROR] Failed to upload file to HDFS: Command '['hdfs', 'dfs', '-put', '/home/hadoop/tmp/customer_profiles_time.parquet', '/stage/customer_profiles']' timed out after 5 seconds
+2025-05-14 09:38:25 [ERROR] Local file /home/hadoop/tmp/customer_profiles_time.parquet removed after failed upload.
+2025-05-14 09:38:25 [ERROR] Pipeline failed for file: customer_profiles with error: 
+Failed to upload file to HDFS: Command '['hdfs', 'dfs', '-put', '/home/hadoop/tmp/customer_profiles_time.parquet', '/stage/customer_profiles']' timed out after 5 seconds 
  ==========================================================================================================================================================================================================================================================

@@ -95,7 +95,7 @@ class Pipeline:
             
             self.parquet_loader.load(df, f'{file.split("/")[-1].split(".")[0]}')
             self.hdfs_loader.load(hdfspath=f'/stage/{file_type}', 
-                                  local_path=f'/home/hadoop/tmp/{file.split("/")[-1].split(".")[0]}.parquet')
+                                    local_path=f'/home/hadoop/tmp/{file.split("/")[-1].split(".")[0]}.parquet')
             
             self.logger.log('info', f"Pipeline completed successfully for file: {file_type} \n {'='*250}")
 

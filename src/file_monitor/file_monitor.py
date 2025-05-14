@@ -14,11 +14,11 @@ class FileMonitor:
         """
         self.pipeline = pipeline
         self.base_dir = base_dir
-        self.last_check_time = time.time()
         self.file_queue = Queue()  # Queue to hold the file paths for processing
         self.processed_files = set()  # Set to keep track of processed files
         self.clear_interval = clear_interval  # Interval to clear the processed files set
         self.last_clear_time = time.time()  # Keep track of when the set was last cleared
+        self.next_target_hour = -1  
 
     def start(self):
         """
@@ -28,14 +28,14 @@ class FileMonitor:
         monitor_thread = threading.Thread(target=self.monitor_files)
         pipeline_thread = threading.Thread(target=self.process_files)
 
-        monitor_thread.daemon = True  
-        pipeline_thread.daemon = True  
+        monitor_thread.daemon = True
+        pipeline_thread.daemon = True
 
         monitor_thread.start()
         pipeline_thread.start()
 
-        monitor_thread.join()  
-        pipeline_thread.join()  
+        monitor_thread.join()
+        pipeline_thread.join()
 
     def monitor_files(self):
         """
@@ -103,12 +103,29 @@ class FileMonitor:
             os.remove(file)
 
 
+    # def check_and_clear_processed_files(self):
+    #     """
+    #     Check if the time has passed for the interval to clear the processed files set.
+    #     Clears the set if the interval is reached.
+    #     """
+    #     current_time = time.time()
+    #     if current_time - self.last_clear_time >= self.clear_interval:
+    #         self.processed_files.clear()  
+    #         self.last_clear_time = current_time 
+
     def check_and_clear_processed_files(self):
         """
-        Check if the time has passed for the interval to clear the processed files set.
-        Clears the set if the interval is reached.
+        Check if the time has reached the next full hour to clear the processed files set.
+        Clears the set when the current time hits the next full hour (e.g., 5:00, 6:00, etc.).
         """
-        current_time = time.time()
-        if current_time - self.last_clear_time >= self.clear_interval:
+        current_hour = datetime.now().hour  
+        current_minute = datetime.now().minute  
+        print(f"Current hour: {current_hour}, Next target hour: {self.next_target_hour}")
+        if current_hour == self.next_target_hour:  
             self.processed_files.clear()  
-            self.last_clear_time = current_time  
+        if current_minute == 0:
+            self.next_target_hour = current_hour + 1 if current_hour < 23 else 0 
+        else:
+            self.next_target_hour = current_hour + 1 if current_hour < 23 else 0  
+
+    
