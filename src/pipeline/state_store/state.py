@@ -1,145 +1,125 @@
-import json
 import os
 import pandas as pd
-from datetime import datetime
-import threading
-
 
 class StateStore:
     def __init__(self, logger, directory):
-        """
-        Initializes the state store for any given table dynamically.
-        
-        :param directory: Directory where the state store files are located.
-        """
         self.directory = directory
         self.logger = logger
+        self._state = None           # current loaded state (list or scalar)
+        self._current_table = None
+        self._current_column = None
 
-
-
-    def load_state(self, table_name, column_name) -> list:
-        """
-        Loads the current state (e.g., bill_id or complaint_date) from the JSON file.
-        Returns the current value (list or single value), or None if the file doesn't exist.
-        
-        :param table_name: The name of the table for which the state is to be retrieved.
-        :param column_name: The name of the column for which the state is to be retrieved.
-        """
-        file_path = f"{self.directory}/{table_name}.json"
-        
-        if not os.path.exists(file_path):
-            return None  
-        
-        with open(file_path, "r") as file:
-            data = json.load(file)
-            return data.get(column_name, None) 
-
-    def save_state(self, table_name, column_name, value) -> None:
-        """
-        Saves the current state (e.g., bill_id or complaint_date) to the JSON file.
-        
-        :param table_name: The name of the table to store the state for.
-        :param column_name: The name of the column to store the state for.
-        :param value: The value to be stored (e.g., list of bill_id or complaint_date).
-        """
-        file_path = f"{self.directory}/{table_name}.json"
-
-        if os.path.exists(file_path):
-            with open(file_path, "r") as file:
-                data = json.load(file)
-        else:
-            data = {}
-
-        data[column_name] = value
-        
-        with open(file_path, "w") as file:
-            json.dump(data, file, indent=4)
-
-    def update_or_add(self, table_name, column_name, value) -> None:
-        """
-        Update or add the value to the state store.
-        If the state is a list (e.g., bill_id), append the values.
-        If the state is a single value (e.g., complaint_date), update it.
-        
-        :param table_name: The name of the table for which the value should be added or updated.
-        :param column_name: The column name for which the value should be added or updated.
-        :param value: The new value(s) to update or add (e.g., bill_id or complaint_date).
-        """
-        if isinstance(value, list):
-            new_values = value  
-        else:
-            new_values = [value] 
-
-        current_state = self.load_state(table_name, column_name)  
-
-        if isinstance(current_state, list):
-            for val in new_values:
-                if val not in current_state:
-                    current_state.append(val)  
-            self.save_state(table_name, column_name, current_state) 
-        
-        elif isinstance(current_state, str):
-            for val in new_values:
-                if current_state != val:
-                    self.save_state(table_name, column_name, val)  
-        elif current_state is None:
-            self.save_state(table_name, column_name, new_values)
+    def _get_file_path(self, table_name):
+        filename = f"{table_name}.parquet"
+        return os.path.join(self.directory, filename)
     
-    def update_or_add_threaded(self, table_name, column_name, value):
+    def load_state(self, table_name, column_name):
+        path = self._get_file_path(table_name)
+        if os.path.exists(path):
+            df = pd.read_parquet(path)
+            if df.empty or column_name not in df.columns:
+                self.logger.log('warning', f"State file {path} is empty or missing column '{column_name}'.")
+                self._state = None
+            else:
+                # If multiple rows => load all as list
+                if len(df) > 1:
+                    self._state = df[column_name].tolist()
+                else:
+                    self._state = df[column_name].iloc[0]
+                self.logger.log('info', f"Loaded state for {table_name}.{column_name} from {path}")
+        else:
+            self.logger.log('info', f"No existing state file for {table_name}.{column_name}, starting empty")
+            self._state = None
+
+        self._current_table = table_name
+        self._current_column = column_name
+
+
+    def flush(self):
+        """Save current in-memory state to parquet file for the current table and column."""
+        if self._current_table is None or self._current_column is None:
+            self.logger.log('warning', "No current table/column loaded, nothing to save.")
+            return
+
+        if self._state is None:
+            self.logger.log('warning', f"No state to save for {self._current_table}.{self._current_column}")
+            return
+
+        path = self._get_file_path(self._current_table)
+        df = pd.DataFrame({self._current_column: [self._state]})
+        df.to_parquet(path, index=False)
+        self.logger.log('info', f"Saved state for {self._current_table} to {path}")
+
+    def update_or_add(self, new_value):
         """
-        Runs the `update_or_add` method in a separate thread to avoid blocking the main process.
-        
-        :param table_name: The name of the table for which the value should be added or updated.
-        :param column_name: The column name for which the value should be added or updated.
-        :param value: The new value(s) to update or add (e.g., bill_id or complaint_date).
+        Update in-memory state with new_value.
+        Supports merging lists or updating scalar if greater.
         """
-        threading.Thread(target=self.update_or_add, args=(table_name, column_name, value)).start()
+        if self._state is None:
+            self._state = new_value
+            return
+
+        if isinstance(self._state, list):
+            combined = set(self._state)
+            if isinstance(new_value, list):
+                combined.update(new_value)
+            else:
+                combined.add(new_value)
+            self._state = list(combined)
+        else:
+            # scalar case: update if new_value is greater
+            if new_value > self._state:
+                self._state = new_value
 
     def filter(self, df, table_name, column_name):
         """
-        Filters the DataFrame based on the state store value.
-        If the state is a list (e.g., bill_id), exclude rows with those values.
-        If the state is a single date (e.g., complaint_date), keep rows with dates greater than the stored date.
-        
-        :param df: The DataFrame to be filtered.
-        :param table_name: The name of the table to retrieve the state for.
-        :param column_name: The column name to filter based on the state value.
-        
-        :return: The filtered DataFrame.
+        Load state for given table and column, then filter DataFrame based on it:
+        - If state is list: exclude rows where df[column_name] in list.
+        - If scalar: keep rows where df[column_name] > scalar.
+
+        After filtering, update the in-memory state with the new values.
+
+        Raises ValueError if filtering results in empty DataFrame.
         """
-        current_state = self.load_state(table_name, column_name) 
+        self.load_state(table_name, column_name)
 
-        ## Log the current state
+        print(self._state)
 
-        if isinstance(current_state, list):
-            df_filtered = df[~df[column_name].isin(current_state)]
-            self.logger.log('info', f"Filtered {table_name} to => {df_filtered.shape[0]} rows.")
-            
-            # After filtering, update the state with the new list of values in the filtered DataFrame
-            new_values = df_filtered[column_name].unique().tolist()
-            self.update_or_add_threaded(table_name, column_name, new_values)  # Append new values to the state list
+        if column_name not in df.columns:
+            self.logger.log('warning', f"Column '{column_name}' not in DataFrame, returning unfiltered DataFrame")
+            return df
 
-        elif isinstance(current_state, str):  
-            df_filtered = df[df[column_name] > current_state]
-            self.logger.log('info', f"Filtered {table_name} to => {df_filtered.shape[0]} rows.")
-            
-            # After filtering, update the state with the max date from the filtered DataFrame
-            if not df_filtered.empty:
-                max_date = df_filtered[column_name].max()
-                self.update_or_add_threaded(table_name, column_name, max_date)
+        if self._state is None:
+            self.logger.log('warning', f"No state loaded for {table_name}.{column_name}, returning unfiltered DataFrame")
+            return df
+
+        if isinstance(self._state, list):
+            print(self._state)
+
+            if len(self._state) == 0:
+                self.logger.log('info', f"State list for {table_name}.{column_name} is empty, skipping exclusion filter.")
+                filtered_df = df
             else:
-                self.logger.log('warning', f"{table_name} file is already processed.")
-                raise ValueError(f"break pipeline for {table_name}.")
-        
+                filtered_df = df[~df[column_name].isin(self._state)]
+                self.logger.log('info', f"Filtered {table_name}.{column_name} by excluding {len(self._state)} known values.\n remaining rows: {filtered_df.shape[0]}")
+
+            # Update in-memory state with new unique values from filtered DataFrame
+            new_vals = filtered_df[column_name].unique().tolist()
+            if new_vals:
+                self.update_or_add(new_vals)
+
         else:
-            df_filtered = df
-            self.logger.log('warning', f"No state for {table_name}.")
+            filtered_df = df[df[column_name] > self._state]
+            self.logger.log('info', f"Filtered {table_name}.{column_name} by keeping values > {self._state}, remaining rows: {filtered_df.shape[0]}")
 
-        # If the filtered DataFrame is empty after applying the filter
-        if df_filtered.empty:
-            self.logger.log('warning', f"{table_name} file is already processed.")
-            raise ValueError(f"Close pipeline for {table_name} becuse it it EMPTY...")
-        
-        return df_filtered
+            if not filtered_df.empty:
+                max_new = filtered_df[column_name].max()
+                self.update_or_add(max_new)
 
+        if filtered_df.empty:
+            self.logger.log('warning', f"Filtering on {table_name}.{column_name} resulted in empty DataFrame")
+            raise ValueError(f"Close pipeline because no data left after filtering on {table_name}.{column_name}")
+        print(self._state)
+
+        return filtered_df
 

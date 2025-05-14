@@ -53,8 +53,8 @@ class Pipeline:
             "credit_cards_billing": "bill_id",
             "customer_profiles": "customer_id",
             "support_tickets": "ticket_id",
-            "loans": "customer_id",
-            "transactions": "sender"
+            "loans": "utilization_date",
+            "transactions": "transaction_date"
         }
 
         # Initialize the schema validator and email notifier
@@ -111,15 +111,26 @@ class Pipeline:
                 self.logger.log('error', f"Unsupported file type for transformation: {file_type}")
                 raise ValueError(f"Unsupported file type for transformation: {file_type}")
             
+            # write the file to parquet
             self.parquet_loader.load(df, f'{file.split("/")[-1].split(".")[0]}')
+
+            # Load the parquet to HDFS
             self.hdfs_loader.load(hdfspath=f'/stage/{file_type}', 
                                     local_path=f'/home/hadoop/tmp/{file.split("/")[-1].split(".")[0]}.parquet')
             
+            # Save the state after processing
+            self.state_store.flush()
+
+            # log the successful processing
             self.logger.log('info', f"Pipeline completed successfully for file: {file_type} \n {'='*250}")
+
 
         except Exception as e:
             self.logger.log('error', f"Pipeline failed for file: {file_type} with error: \n{e} \n {'='*250}")
+
+            # Move the failed file to a separate directory
             shutil.move(file, f'./data/failed_files/{file.split("/")[-1]}')
-            # self.notifier.notify(os.getenv('TO_EMAIL_1'))
+
+            # Send an email notification when the pipeline fails
             threading.Thread(target=self.notifier.notify, args= (os.getenv('TO_EMAIL_1'), )).start()
             
