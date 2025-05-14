@@ -120,7 +120,6 @@ class FileMonitor:
         """
         current_hour = datetime.now().hour  
         current_minute = datetime.now().minute  
-        print(f"Current hour: {current_hour}, Next target hour: {self.next_target_hour}")
         if current_hour == self.next_target_hour:  
             self.processed_files.clear()  
         if current_minute == 0:

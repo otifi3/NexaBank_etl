@@ -1,23 +1,26 @@
-from dotenv import load_dotenv
 import os
 import shutil
+import threading
+
+from dotenv import load_dotenv
+
 from pipeline.extractors.csv_extractor import CSVExtractor
 from pipeline.extractors.txt_extractor import TXTExtractor
 from pipeline.extractors.json_extractor import JSONExtractor
 
-from pipeline.transformers.credit_transformers import CreditTransformers
-from pipeline.transformers.customer_transformers import CustomerTransformers
 from pipeline.transformers.Loans_transformers import LoanTransformers
+from pipeline.transformers.credit_transformers import CreditTransformers
 from pipeline.transformers.support_transformers import SupportTransformers
+from pipeline.transformers.customer_transformers import CustomerTransformers
 from pipeline.transformers.money_transfers_transformers import MoneyTransformers
-from pipeline.loaders.parquet_loader import ParquetLoader 
-from pipeline.loaders.hdfs_loader import HDFSLoader 
 
-from pipeline.validators.schema_validator import SchemaValidator
-from pipeline.notifier.email_notifier import EmailNotifier 
 from pipeline.loaders.hdfs_loader import HDFSLoader 
+from pipeline.loaders.parquet_loader import ParquetLoader 
+
 from pipeline.logger.logger import Logger 
 from pipeline.state_store.state import StateStore
+from pipeline.notifier.email_notifier import EmailNotifier 
+from pipeline.validators.schema_validator import SchemaValidator
 
 class Pipeline:
     def __init__(self, logger: Logger):
@@ -46,18 +49,26 @@ class Pipeline:
             "transactions": MoneyTransformers(logger)
         }
 
+        self.states = {
+            "credit_cards_billing": "bill_id",
+            "customer_profiles": "customer_id",
+            "support_tickets": "ticket_id",
+            "loans": "customer_id",
+            "transactions": "sender"
+        }
+
         # Initialize the schema validator and email notifier
         self.validator = SchemaValidator(logger, '/home/hadoop/src/pipeline/support/schemas.json')  
         self.notifier = EmailNotifier(self.smtp_server, self.smtp_port, self.user, self.password) 
         self.parquet_loader = ParquetLoader(logger, './tmp')
         self.hdfs_loader = HDFSLoader(logger) 
+        self.state_store = StateStore(logger, '/home/hadoop/state')  
 
     def run(self, file):
         """
         Process the file using the appropriate extractor, transformer, validator, and loader.
         """
         
-
         # Extract file extension
         file_extension = file.split('.')[-1].lower()
 
@@ -86,6 +97,13 @@ class Pipeline:
             
             # Dynamically select the correct transformer based on file type
             transformer = self.transformers.get(file_type)
+
+            # filter the date that is not in the state store
+            column_name = self.states.get(file_type)
+            df = self.state_store.filter(df, file_type, column_name)
+
+
+            # Transform the DataFrame
             if transformer:
                 df = transformer.transform(df)
                 self.logger.log('info', f"Transformed {file_type}: \ncolumns => {list(df.columns)} \nrows => {df.shape[0]}")
@@ -102,5 +120,6 @@ class Pipeline:
         except Exception as e:
             self.logger.log('error', f"Pipeline failed for file: {file_type} with error: \n{e} \n {'='*250}")
             shutil.move(file, f'./data/failed_files/{file.split("/")[-1]}')
-            self.notifier.notify(os.getenv('TO_EMAIL_1'))
+            # self.notifier.notify(os.getenv('TO_EMAIL_1'))
+            threading.Thread(target=self.notifier.notify, args= (os.getenv('TO_EMAIL_1'), )).start()
             
