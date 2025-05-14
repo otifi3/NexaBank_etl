@@ -1,6 +1,6 @@
 import os
 import pandas as pd
-# import seaborn as sns
+import seaborn as sns
 import matplotlib.pyplot as plt
 from datetime import datetime, timedelta
 from pyhive import hive
