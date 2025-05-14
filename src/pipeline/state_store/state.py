@@ -10,7 +10,7 @@ class StateStore:
         """
         self.directory = directory
 
-    def load_state(self, table_name, column_name):
+    def load_state(self, table_name, column_name) -> list:
         """
         Loads the current state (e.g., bill_id or complaint_date) from the JSON file.
         Returns the current value (list or single value), or None if the file doesn't exist.
@@ -27,7 +27,7 @@ class StateStore:
             data = json.load(file)
             return data.get(column_name, None) 
 
-    def save_state(self, table_name, column_name, value):
+    def save_state(self, table_name, column_name, value) -> None:
         """
         Saves the current state (e.g., bill_id or complaint_date) to the JSON file.
         
@@ -48,7 +48,7 @@ class StateStore:
         with open(file_path, "w") as file:
             json.dump(data, file, indent=4)
 
-    def update_or_add(self, table_name, column_name, value):
+    def update_or_add(self, table_name, column_name, value) -> None:
         """
         Update or add the value to the state store.
         If the state is a list (e.g., bill_id), append the values.

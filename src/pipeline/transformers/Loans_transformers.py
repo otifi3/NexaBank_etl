@@ -24,13 +24,13 @@ class LoanTransformers(Transformer):
             self.logger.log('error', f'Error during transformation: {self.file}')
             raise Exception(f"{self.file} Transformation Failed")
     
-
     def calculate_total_cost(self, df: pd.DataFrame) -> pd.DataFrame:
         """
         Calculate the 'total_cost' column based on the 'amount_utilized'
         """
         df['total_cost'] = df['amount_utilized'] * 0.20 + 1000
         return df
+    
     def encrypt_loan_reason(self, df: pd.DataFrame) -> pd.DataFrame:
         """
         Encrypt the 'loan_reason' column using the Encryptor's encrypt method.

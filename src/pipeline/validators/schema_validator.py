@@ -43,14 +43,12 @@ class SchemaValidator:
             # Get the actual dtype of the column
             actual_dtype = df[column].dtype
 
-            # Convert string dates to datetime if the expected type is datetime
             if dtype == 'str' and actual_dtype != 'object':
                 error_message = f"Column {column} is expected to be a string, but found {actual_dtype} in {self.file}."
                 self.logger.log('error', error_message)
                 raise ValueError(error_message)
 
             elif dtype == 'datetime':
-                # Check if the column is already a datetime, if not try converting it
                 if not pd.api.types.is_datetime64_any_dtype(actual_dtype):
                     try:
                         df[column] = pd.to_datetime(df[column], errors='raise')
@@ -69,5 +67,4 @@ class SchemaValidator:
                 self.logger.log('error', error_message)
                 raise ValueError(error_message)
 
-        # If no validation issues are found, return successfully
         self.logger.log('info', f"{self.file} schema validation passed.")
