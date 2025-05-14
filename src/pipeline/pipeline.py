@@ -17,7 +17,7 @@ from pipeline.validators.schema_validator import SchemaValidator
 from pipeline.notifier.email_notifier import EmailNotifier 
 from pipeline.loaders.hdfs_loader import HDFSLoader 
 from pipeline.logger.logger import Logger 
-
+from pipeline.state_store.state import StateStore
 
 class Pipeline:
     def __init__(self, logger: Logger):
