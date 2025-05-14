@@ -140,3 +140,73 @@ rows => 100000
 2025-05-14 09:38:25 [ERROR] Pipeline failed for file: customer_profiles with error: 
 Failed to upload file to HDFS: Command '['hdfs', 'dfs', '-put', '/home/hadoop/tmp/customer_profiles_time.parquet', '/stage/customer_profiles']' timed out after 5 seconds 
  ==========================================================================================================================================================================================================================================================
+2025-05-14 15:12:35 [INFO] Processing file: loans
+2025-05-14 15:12:35 [INFO] Extracted loans: 
+columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason'] 
+rows => 1000
+2025-05-14 15:12:35 [INFO] loans schema validation passed.
+2025-05-14 15:12:36 [INFO] Transformed loans: 
+columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason', 'age', 'total_cost', 'processing_time', 'partition_date', 'partition_hour'] 
+rows => 1000
+2025-05-14 15:12:36 [INFO] Data successfully written to ./tmp/loans_time.parquet
+2025-05-14 15:12:41 [ERROR] Failed to upload file to HDFS: Command '['hdfs', 'dfs', '-put', '/home/hadoop/tmp/loans_time.parquet', '/stage/loans']' timed out after 5 seconds
+2025-05-14 15:12:41 [ERROR] Local file /home/hadoop/tmp/loans_time.parquet removed after failed upload.
+2025-05-14 15:12:41 [ERROR] Pipeline failed for file: loans with error: 
+Failed to upload file to HDFS: Command '['hdfs', 'dfs', '-put', '/home/hadoop/tmp/loans_time.parquet', '/stage/loans']' timed out after 5 seconds 
+ ==========================================================================================================================================================================================================================================================
+2025-05-14 15:12:45 [INFO] Processing file: support_tickets
+2025-05-14 15:12:45 [INFO] Extracted support_tickets: 
+columns => ['ticket_id', 'customer_id', 'complaint_category', 'complaint_date', 'severity'] 
+rows => 15000
+2025-05-14 15:12:45 [INFO] support_tickets schema validation passed.
+2025-05-14 15:12:45 [INFO] Transformed support_tickets: 
+columns => ['ticket_id', 'customer_id', 'complaint_category', 'complaint_date', 'severity', 'age', 'processing_time', 'partition_date', 'partition_hour'] 
+rows => 15000
+2025-05-14 15:12:45 [INFO] Data successfully written to ./tmp/support_tickets_time.parquet
+2025-05-14 15:12:50 [ERROR] Failed to upload file to HDFS: Command '['hdfs', 'dfs', '-put', '/home/hadoop/tmp/support_tickets_time.parquet', '/stage/support_tickets']' timed out after 5 seconds
+2025-05-14 15:12:50 [ERROR] Local file /home/hadoop/tmp/support_tickets_time.parquet removed after failed upload.
+2025-05-14 15:12:50 [ERROR] Pipeline failed for file: support_tickets with error: 
+Failed to upload file to HDFS: Command '['hdfs', 'dfs', '-put', '/home/hadoop/tmp/support_tickets_time.parquet', '/stage/support_tickets']' timed out after 5 seconds 
+ ==========================================================================================================================================================================================================================================================
+2025-05-14 15:12:53 [INFO] Processing file: credit_cards_billing
+2025-05-14 15:12:53 [INFO] Extracted credit_cards_billing: 
+columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date'] 
+rows => 200000
+2025-05-14 15:12:53 [INFO] credit_cards_billing schema validation passed.
+2025-05-14 15:12:53 [INFO] Transformed credit_cards_billing: 
+columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date', 'fully_paid', 'debt', 'due_date', 'late_days', 'fine', 'total_amount', 'processing_time', 'partition_date', 'partition_hour'] 
+rows => 200000
+2025-05-14 15:12:53 [INFO] Data successfully written to ./tmp/credit_cards_billing_time.parquet
+2025-05-14 15:12:58 [ERROR] Failed to upload file to HDFS: Command '['hdfs', 'dfs', '-put', '/home/hadoop/tmp/credit_cards_billing_time.parquet', '/stage/credit_cards_billing']' timed out after 5 seconds
+2025-05-14 15:12:58 [ERROR] Local file /home/hadoop/tmp/credit_cards_billing_time.parquet removed after failed upload.
+2025-05-14 15:12:58 [ERROR] Pipeline failed for file: credit_cards_billing with error: 
+Failed to upload file to HDFS: Command '['hdfs', 'dfs', '-put', '/home/hadoop/tmp/credit_cards_billing_time.parquet', '/stage/credit_cards_billing']' timed out after 5 seconds 
+ ==========================================================================================================================================================================================================================================================
+2025-05-14 15:13:01 [INFO] Processing file: transactions
+2025-05-14 15:13:01 [INFO] Extracted transactions: 
+columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date'] 
+rows => 100000
+2025-05-14 15:13:01 [INFO] transactions schema validation passed.
+2025-05-14 15:13:01 [INFO] Transformed transactions: 
+columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date', 'cost', 'total_amount', 'processing_time', 'partition_date', 'partition_hour'] 
+rows => 100000
+2025-05-14 15:13:01 [INFO] Data successfully written to ./tmp/transactions_time.parquet
+2025-05-14 15:13:06 [ERROR] Failed to upload file to HDFS: Command '['hdfs', 'dfs', '-put', '/home/hadoop/tmp/transactions_time.parquet', '/stage/transactions']' timed out after 5 seconds
+2025-05-14 15:13:06 [ERROR] Local file /home/hadoop/tmp/transactions_time.parquet removed after failed upload.
+2025-05-14 15:13:06 [ERROR] Pipeline failed for file: transactions with error: 
+Failed to upload file to HDFS: Command '['hdfs', 'dfs', '-put', '/home/hadoop/tmp/transactions_time.parquet', '/stage/transactions']' timed out after 5 seconds 
+ ==========================================================================================================================================================================================================================================================
+2025-05-14 15:13:10 [INFO] Processing file: customer_profiles
+2025-05-14 15:13:10 [INFO] Extracted customer_profiles: 
+columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier'] 
+rows => 100000
+2025-05-14 15:13:10 [INFO] customer_profiles schema validation passed.
+2025-05-14 15:13:10 [INFO] Transformed customer_profiles: 
+columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier', 'tenure', 'customer_segment', 'processing_time', 'partition_date', 'partition_hour'] 
+rows => 100000
+2025-05-14 15:13:10 [INFO] Data successfully written to ./tmp/customer_profiles_time.parquet
+2025-05-14 15:13:15 [ERROR] Failed to upload file to HDFS: Command '['hdfs', 'dfs', '-put', '/home/hadoop/tmp/customer_profiles_time.parquet', '/stage/customer_profiles']' timed out after 5 seconds
+2025-05-14 15:13:15 [ERROR] Local file /home/hadoop/tmp/customer_profiles_time.parquet removed after failed upload.
+2025-05-14 15:13:15 [ERROR] Pipeline failed for file: customer_profiles with error: 
+Failed to upload file to HDFS: Command '['hdfs', 'dfs', '-put', '/home/hadoop/tmp/customer_profiles_time.parquet', '/stage/customer_profiles']' timed out after 5 seconds 
+ ==========================================================================================================================================================================================================================================================

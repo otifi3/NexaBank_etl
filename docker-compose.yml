@@ -7,8 +7,10 @@ services:
       - ./src:/home/hadoop/src
       - ./tmp:/home/hadoop/tmp
       - ./logs:/home/hadoop/logs
-      - ./data:/home/hadoop/data
+      - ./data:/home/hadoop/data  
       - ./state:/home/hadoop/state
+      - /etc/localtime:/etc/localtime:ro 
+      - /etc/timezone:/etc/timezone:ro 
     working_dir: /home/hadoop/
     entrypoint: bash
     tty: true
