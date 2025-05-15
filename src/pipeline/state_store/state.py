@@ -63,7 +63,6 @@ class StateStore:
                 self.logger.log('warning', f"State file {path} is empty or missing column '{column_name}'.")
                 self._state = None
             else:
-                # If multiple rows, load list of strings; else single string scalar
                 if df.shape[0] > 1:
                     self._state = df[column_name].astype(str).tolist()
                 else:
