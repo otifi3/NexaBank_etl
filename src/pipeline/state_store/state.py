@@ -2,18 +2,60 @@ import os
 import pandas as pd
 
 class StateStore:
+    """
+    A class to manage loading, saving, updating, and filtering state information for 
+    tables and columns using parquet files as persistent storage.
+
+    The state can be either a scalar string or a list of strings representing processed values,
+    which is used to filter new incoming data.
+
+    Attributes:
+        directory (str): Directory path where state parquet files are stored.
+        logger: Logger instance for logging info and warnings.
+        _state (str or list): Current loaded state (single string or list of strings).
+        _current_table (str): The currently loaded table name.
+        _current_column (str): The currently loaded column name.
+    """
+
     def __init__(self, logger, directory):
+        """
+        Initialize the StateStore instance.
+
+        Args:
+            logger: Logger instance for logging.
+            directory (str): Directory to save/load parquet state files.
+        """
         self.directory = directory
         self.logger = logger
         self._state = None           # current loaded state (list or scalar)
         self._current_table = None
         self._current_column = None
 
-    def _get_file_path(self, table_name):
+    def _get_file_path(self, table_name) -> str:
+        """
+        Generate the file path for the parquet state file for the given table.
+
+        Args:
+            table_name (str): The table name.
+
+        Returns:
+            str: Full file path for the parquet file storing the state.
+        """
         filename = f"{table_name}.parquet"
         return os.path.join(self.directory, filename)
     
-    def load_state(self, table_name, column_name):
+    def load_state(self, table_name, column_name) -> None:
+        """
+        Load the state from a parquet file for the specified table and column.
+
+        If the file does not exist or is empty, sets the state to None.
+        If the specified column is missing, logs a warning and sets state to None.
+        Converts all loaded state values to strings.
+
+        Args:
+            table_name (str): The table name.
+            column_name (str): The column name to load state for.
+        """
         path = self._get_file_path(table_name)
         if os.path.exists(path):
             df = pd.read_parquet(path)
@@ -21,11 +63,11 @@ class StateStore:
                 self.logger.log('warning', f"State file {path} is empty or missing column '{column_name}'.")
                 self._state = None
             else:
-                # If multiple rows => load all as list
-                if len(df) > 1:
-                    self._state = df[column_name].tolist()
+                # If multiple rows, load list of strings; else single string scalar
+                if df.shape[0] > 1:
+                    self._state = df[column_name].astype(str).tolist()
                 else:
-                    self._state = df[column_name].iloc[0]
+                    self._state = str(df[column_name].iloc[0])
                 self.logger.log('info', f"Loaded state for {table_name}.{column_name} from {path}")
         else:
             self.logger.log('info', f"No existing state file for {table_name}.{column_name}, starting empty")
@@ -34,9 +76,13 @@ class StateStore:
         self._current_table = table_name
         self._current_column = column_name
 
+    def flush(self) -> None:
+        """
+        Save the current in-memory state to a parquet file for the current table and column.
 
-    def flush(self):
-        """Save current in-memory state to parquet file for the current table and column."""
+        If no current table or column is loaded, or state is None, logs a warning and does nothing.
+        Saves lists as multiple rows; scalar as a single-row dataframe.
+        """
         if self._current_table is None or self._current_column is None:
             self.logger.log('warning', "No current table/column loaded, nothing to save.")
             return
@@ -46,14 +92,23 @@ class StateStore:
             return
 
         path = self._get_file_path(self._current_table)
-        df = pd.DataFrame({self._current_column: [self._state]})
+        if isinstance(self._state, list):
+            df = pd.DataFrame({self._current_column: self._state})
+        else:
+            df = pd.DataFrame({self._current_column: [self._state]})
         df.to_parquet(path, index=False)
         self.logger.log('info', f"Saved state for {self._current_table} to {path}")
 
-    def update_or_add(self, new_value):
+    def update_or_add(self, new_value) -> None:
         """
-        Update in-memory state with new_value.
-        Supports merging lists or updating scalar if greater.
+        Update the in-memory state with new_value.
+
+        - If current state is None, sets it to new_value.
+        - If state is a list, merges new_value(s) into the list (supports list or scalar).
+        - If state is a scalar string, updates it if new_value is lexicographically greater.
+
+        Args:
+            new_value (str or list): New value(s) to add to the state.
         """
         if self._state is None:
             self._state = new_value
@@ -67,59 +122,52 @@ class StateStore:
                 combined.add(new_value)
             self._state = list(combined)
         else:
-            # scalar case: update if new_value is greater
             if new_value > self._state:
                 self._state = new_value
 
-    def filter(self, df, table_name, column_name):
+    def filter(self, df, table_name, column_name) -> pd.DataFrame:
         """
-        Load state for given table and column, then filter DataFrame based on it:
-        - If state is list: exclude rows where df[column_name] in list.
-        - If scalar: keep rows where df[column_name] > scalar.
+        Filter the DataFrame based on the current state for the specified table and column.
 
-        After filtering, update the in-memory state with the new values.
+        Logic:
+        - If state is a list of strings, exclude rows where column value is in that list.
+        - If state is a scalar string, keep only rows where column value is lexicographically greater than the state.
 
-        Raises ValueError if filtering results in empty DataFrame.
+        After filtering, update the in-memory state with new values found in the filtered DataFrame.
+
+        Raises:
+            ValueError: If filtering results in an empty DataFrame.
+
+        Args:
+            df (pd.DataFrame): The DataFrame to filter.
+            table_name (str): The table name.
+            column_name (str): The column name to filter on.
+
+        Returns:
+            pd.DataFrame: The filtered DataFrame.
         """
         self.load_state(table_name, column_name)
-
-        print(self._state)
-
-        if column_name not in df.columns:
-            self.logger.log('warning', f"Column '{column_name}' not in DataFrame, returning unfiltered DataFrame")
-            return df
 
         if self._state is None:
             self.logger.log('warning', f"No state loaded for {table_name}.{column_name}, returning unfiltered DataFrame")
             return df
 
         if isinstance(self._state, list):
-            print(self._state)
-
-            if len(self._state) == 0:
-                self.logger.log('info', f"State list for {table_name}.{column_name} is empty, skipping exclusion filter.")
-                filtered_df = df
-            else:
-                filtered_df = df[~df[column_name].isin(self._state)]
-                self.logger.log('info', f"Filtered {table_name}.{column_name} by excluding {len(self._state)} known values.\n remaining rows: {filtered_df.shape[0]}")
-
-            # Update in-memory state with new unique values from filtered DataFrame
+            filtered_df = df[~df[column_name].isin(self._state)]
+            self.logger.log('info', f"Filtered {table_name}.{column_name}, remaining rows => {filtered_df.shape[0]}")
             new_vals = filtered_df[column_name].unique().tolist()
             if new_vals:
                 self.update_or_add(new_vals)
-
         else:
-            filtered_df = df[df[column_name] > self._state]
-            self.logger.log('info', f"Filtered {table_name}.{column_name} by keeping values > {self._state}, remaining rows: {filtered_df.shape[0]}")
-
+            val = self._state
+            filtered_df = df[df[column_name] > val]
+            self.logger.log('info', f"Filtered {table_name}.{column_name}, remaining rows => {filtered_df.shape[0]}")
             if not filtered_df.empty:
                 max_new = filtered_df[column_name].max()
                 self.update_or_add(max_new)
 
         if filtered_df.empty:
             self.logger.log('warning', f"Filtering on {table_name}.{column_name} resulted in empty DataFrame")
-            raise ValueError(f"Close pipeline because no data left after filtering on {table_name}.{column_name}")
-        print(self._state)
+            raise ValueError(f"No data left after filtering on {table_name}.{column_name}")
 
         return filtered_df
-

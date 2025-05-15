@@ -1,0 +1,192 @@
+2025-05-15 21:46:41 [INFO] Processing file: transactions
+2025-05-15 21:46:42 [INFO] Extracted transactions: 
+columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date'] 
+rows => 100000
+2025-05-15 21:46:42 [INFO] transactions schema validation passed.
+2025-05-15 21:46:42 [INFO] Loaded state for transactions.transaction_date from /home/hadoop/state/transactions.parquet
+2025-05-15 21:46:42 [INFO] Filtered transactions.transaction_date by keeping values > '2025-04-23', remaining rows: 0
+2025-05-15 21:46:42 [WARNING] Filtering on transactions.transaction_date resulted in empty DataFrame
+2025-05-15 21:46:42 [ERROR] Pipeline failed for file: transactions with error: 
+No data left after filtering on transactions.transaction_date 
+ ==========================================================================================================================================================================================================================================================
+2025-05-15 21:46:43 [INFO] Processing file: support_tickets
+2025-05-15 21:46:43 [INFO] Extracted support_tickets: 
+columns => ['ticket_id', 'customer_id', 'complaint_category', 'complaint_date', 'severity'] 
+rows => 15000
+2025-05-15 21:46:43 [INFO] support_tickets schema validation passed.
+2025-05-15 21:46:43 [INFO] Loaded state for support_tickets.ticket_id from /home/hadoop/state/support_tickets.parquet
+2025-05-15 21:46:43 [INFO] Filtered support_tickets.ticket_id by keeping values > '['' 'TICKET012117' 'TICKET013179' ... 'TICKET000606' 'TICKET014449'
+ 'TICKET014913']', remaining rows: 0
+2025-05-15 21:46:43 [WARNING] Filtering on support_tickets.ticket_id resulted in empty DataFrame
+2025-05-15 21:46:43 [ERROR] Pipeline failed for file: support_tickets with error: 
+No data left after filtering on support_tickets.ticket_id 
+ ==========================================================================================================================================================================================================================================================
+2025-05-15 21:46:44 [INFO] Processing file: customer_profiles
+2025-05-15 21:46:44 [INFO] Extracted customer_profiles: 
+columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier'] 
+rows => 100000
+2025-05-15 21:46:44 [INFO] customer_profiles schema validation passed.
+2025-05-15 21:46:44 [INFO] Loaded state for customer_profiles.customer_id from /home/hadoop/state/customer_profiles.parquet
+2025-05-15 21:46:44 [INFO] Filtered customer_profiles.customer_id by keeping values > '['' 'CUST064485' 'CUST041668' ... 'CUST022404' 'CUST049310' 'CUST067500']', remaining rows: 0
+2025-05-15 21:46:44 [WARNING] Filtering on customer_profiles.customer_id resulted in empty DataFrame
+2025-05-15 21:46:44 [ERROR] Pipeline failed for file: customer_profiles with error: 
+No data left after filtering on customer_profiles.customer_id 
+ ==========================================================================================================================================================================================================================================================
+2025-05-15 21:46:46 [INFO] Processing file: credit_cards_billing
+2025-05-15 21:46:46 [INFO] Extracted credit_cards_billing: 
+columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date'] 
+rows => 200000
+2025-05-15 21:46:46 [INFO] credit_cards_billing schema validation passed.
+2025-05-15 21:46:46 [INFO] Loaded state for credit_cards_billing.bill_id from /home/hadoop/state/credit_cards_billing.parquet
+2025-05-15 21:46:46 [INFO] Filtered credit_cards_billing.bill_id by keeping values > '['' 'BILL9110416' 'BILL9898252' ... 'BILL4183676' 'BILL4284092'
+ 'BILL6360449']', remaining rows: 0
+2025-05-15 21:46:46 [WARNING] Filtering on credit_cards_billing.bill_id resulted in empty DataFrame
+2025-05-15 21:46:46 [ERROR] Pipeline failed for file: credit_cards_billing with error: 
+No data left after filtering on credit_cards_billing.bill_id 
+ ==========================================================================================================================================================================================================================================================
+2025-05-15 21:46:47 [INFO] Processing file: loans
+2025-05-15 21:46:47 [INFO] Extracted loans: 
+columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason'] 
+rows => 1000
+2025-05-15 21:46:47 [INFO] loans schema validation passed.
+2025-05-15 21:46:47 [INFO] Loaded state for loans.utilization_date from /home/hadoop/state/loans.parquet
+2025-05-15 21:46:47 [INFO] Filtered loans.utilization_date by keeping values > '2025-04-23', remaining rows: 0
+2025-05-15 21:46:47 [WARNING] Filtering on loans.utilization_date resulted in empty DataFrame
+2025-05-15 21:46:47 [ERROR] Pipeline failed for file: loans with error: 
+No data left after filtering on loans.utilization_date 
+ ==========================================================================================================================================================================================================================================================
+2025-05-15 21:50:23 [INFO] Processing file: transactions
+2025-05-15 21:50:23 [INFO] Extracted transactions: 
+columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date'] 
+rows => 100000
+2025-05-15 21:50:23 [INFO] transactions schema validation passed.
+2025-05-15 21:50:23 [INFO] Loaded state for transactions.transaction_date from /home/hadoop/state/transactions.parquet
+2025-05-15 21:50:23 [INFO] Filtered transactions.transaction_date b, remaining rows => 0
+2025-05-15 21:50:23 [WARNING] Filtering on transactions.transaction_date resulted in empty DataFrame
+2025-05-15 21:50:23 [ERROR] Pipeline failed for file: transactions with error: 
+No data left after filtering on transactions.transaction_date 
+ ==========================================================================================================================================================================================================================================================
+2025-05-15 21:50:24 [INFO] Processing file: support_tickets
+2025-05-15 21:50:24 [INFO] Extracted support_tickets: 
+columns => ['ticket_id', 'customer_id', 'complaint_category', 'complaint_date', 'severity'] 
+rows => 15000
+2025-05-15 21:50:25 [INFO] support_tickets schema validation passed.
+2025-05-15 21:50:25 [INFO] Loaded state for support_tickets.ticket_id from /home/hadoop/state/support_tickets.parquet
+2025-05-15 21:50:25 [INFO] Filtered support_tickets.ticket_id b, remaining rows => 0
+2025-05-15 21:50:25 [WARNING] Filtering on support_tickets.ticket_id resulted in empty DataFrame
+2025-05-15 21:50:25 [ERROR] Pipeline failed for file: support_tickets with error: 
+No data left after filtering on support_tickets.ticket_id 
+ ==========================================================================================================================================================================================================================================================
+2025-05-15 21:50:26 [INFO] Processing file: customer_profiles
+2025-05-15 21:50:26 [INFO] Extracted customer_profiles: 
+columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier'] 
+rows => 100000
+2025-05-15 21:50:26 [INFO] customer_profiles schema validation passed.
+2025-05-15 21:50:26 [INFO] Loaded state for customer_profiles.customer_id from /home/hadoop/state/customer_profiles.parquet
+2025-05-15 21:50:26 [INFO] Filtered customer_profiles.customer_id b, remaining rows => 0
+2025-05-15 21:50:26 [WARNING] Filtering on customer_profiles.customer_id resulted in empty DataFrame
+2025-05-15 21:50:26 [ERROR] Pipeline failed for file: customer_profiles with error: 
+No data left after filtering on customer_profiles.customer_id 
+ ==========================================================================================================================================================================================================================================================
+2025-05-15 21:50:27 [INFO] Processing file: credit_cards_billing
+2025-05-15 21:50:27 [INFO] Extracted credit_cards_billing: 
+columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date'] 
+rows => 200000
+2025-05-15 21:50:27 [INFO] credit_cards_billing schema validation passed.
+2025-05-15 21:50:27 [INFO] Loaded state for credit_cards_billing.bill_id from /home/hadoop/state/credit_cards_billing.parquet
+2025-05-15 21:50:27 [INFO] Filtered credit_cards_billing.bill_id b, remaining rows => 0
+2025-05-15 21:50:27 [WARNING] Filtering on credit_cards_billing.bill_id resulted in empty DataFrame
+2025-05-15 21:50:27 [ERROR] Pipeline failed for file: credit_cards_billing with error: 
+No data left after filtering on credit_cards_billing.bill_id 
+ ==========================================================================================================================================================================================================================================================
+2025-05-15 21:50:28 [INFO] Processing file: loans
+2025-05-15 21:50:28 [INFO] Extracted loans: 
+columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason'] 
+rows => 1000
+2025-05-15 21:50:28 [INFO] loans schema validation passed.
+2025-05-15 21:50:28 [INFO] Loaded state for loans.utilization_date from /home/hadoop/state/loans.parquet
+2025-05-15 21:50:28 [INFO] Filtered loans.utilization_date b, remaining rows => 0
+2025-05-15 21:50:28 [WARNING] Filtering on loans.utilization_date resulted in empty DataFrame
+2025-05-15 21:50:28 [ERROR] Pipeline failed for file: loans with error: 
+No data left after filtering on loans.utilization_date 
+ ==========================================================================================================================================================================================================================================================
+2025-05-15 21:51:11 [INFO] Processing file: transactions
+2025-05-15 21:51:11 [INFO] Extracted transactions: 
+columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date'] 
+rows => 100000
+2025-05-15 21:51:11 [INFO] transactions schema validation passed.
+2025-05-15 21:51:11 [INFO] Loaded state for transactions.transaction_date from /home/hadoop/state/transactions.parquet
+2025-05-15 21:51:11 [INFO] Filtered transactions.transaction_date b, remaining rows => 100000
+2025-05-15 21:51:11 [INFO] Transformed transactions: 
+columns => ['sender', 'receiver', 'transaction_amount', 'transaction_date', 'cost', 'total_amount', 'processing_time', 'partition_date', 'partition_hour'] 
+rows => 100000
+2025-05-15 21:51:11 [INFO] Data successfully written to ./tmp/transactions_2.parquet
+2025-05-15 21:51:14 [INFO] File successfully uploaded to HDFS at /stage/transactions
+2025-05-15 21:51:14 [INFO] Local file /home/hadoop/tmp/transactions_2.parquet removed after upload.
+2025-05-15 21:51:14 [INFO] Saved state for transactions to /home/hadoop/state/transactions.parquet
+2025-05-15 21:51:14 [INFO] Pipeline completed successfully for file: transactions 
+ ==========================================================================================================================================================================================================================================================
+2025-05-15 21:51:15 [INFO] Processing file: support_tickets
+2025-05-15 21:51:15 [INFO] Extracted support_tickets: 
+columns => ['ticket_id', 'customer_id', 'complaint_category', 'complaint_date', 'severity'] 
+rows => 15000
+2025-05-15 21:51:15 [INFO] support_tickets schema validation passed.
+2025-05-15 21:51:15 [INFO] Loaded state for support_tickets.ticket_id from /home/hadoop/state/support_tickets.parquet
+2025-05-15 21:51:15 [INFO] Filtered support_tickets.ticket_id, remaining rows => 15000
+2025-05-15 21:51:15 [INFO] Transformed support_tickets: 
+columns => ['ticket_id', 'customer_id', 'complaint_category', 'complaint_date', 'severity', 'age', 'processing_time', 'partition_date', 'partition_hour'] 
+rows => 15000
+2025-05-15 21:51:15 [INFO] Data successfully written to ./tmp/support_tickets_2.parquet
+2025-05-15 21:51:19 [INFO] File successfully uploaded to HDFS at /stage/support_tickets
+2025-05-15 21:51:19 [INFO] Local file /home/hadoop/tmp/support_tickets_2.parquet removed after upload.
+2025-05-15 21:51:19 [INFO] Saved state for support_tickets to /home/hadoop/state/support_tickets.parquet
+2025-05-15 21:51:19 [INFO] Pipeline completed successfully for file: support_tickets 
+ ==========================================================================================================================================================================================================================================================
+2025-05-15 21:51:20 [INFO] Processing file: customer_profiles
+2025-05-15 21:51:20 [INFO] Extracted customer_profiles: 
+columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier'] 
+rows => 100000
+2025-05-15 21:51:20 [INFO] customer_profiles schema validation passed.
+2025-05-15 21:51:20 [INFO] Loaded state for customer_profiles.customer_id from /home/hadoop/state/customer_profiles.parquet
+2025-05-15 21:51:20 [INFO] Filtered customer_profiles.customer_id, remaining rows => 100000
+2025-05-15 21:51:20 [INFO] Transformed customer_profiles: 
+columns => ['customer_id', 'name', 'gender', 'age', 'city', 'account_open_date', 'product_type', 'customer_tier', 'tenure', 'customer_segment', 'processing_time', 'partition_date', 'partition_hour'] 
+rows => 100000
+2025-05-15 21:51:20 [INFO] Data successfully written to ./tmp/customer_profiles_2.parquet
+2025-05-15 21:51:22 [INFO] File successfully uploaded to HDFS at /stage/customer_profiles
+2025-05-15 21:51:22 [INFO] Local file /home/hadoop/tmp/customer_profiles_2.parquet removed after upload.
+2025-05-15 21:51:22 [INFO] Saved state for customer_profiles to /home/hadoop/state/customer_profiles.parquet
+2025-05-15 21:51:22 [INFO] Pipeline completed successfully for file: customer_profiles 
+ ==========================================================================================================================================================================================================================================================
+2025-05-15 21:51:23 [INFO] Processing file: credit_cards_billing
+2025-05-15 21:51:23 [INFO] Extracted credit_cards_billing: 
+columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date'] 
+rows => 200000
+2025-05-15 21:51:23 [INFO] credit_cards_billing schema validation passed.
+2025-05-15 21:51:23 [INFO] Loaded state for credit_cards_billing.bill_id from /home/hadoop/state/credit_cards_billing.parquet
+2025-05-15 21:51:23 [INFO] Filtered credit_cards_billing.bill_id, remaining rows => 200000
+2025-05-15 21:51:23 [INFO] Transformed credit_cards_billing: 
+columns => ['bill_id', 'customer_id', 'month', 'amount_due', 'amount_paid', 'payment_date', 'fully_paid', 'debt', 'due_date', 'late_days', 'fine', 'total_amount', 'processing_time', 'partition_date', 'partition_hour'] 
+rows => 200000
+2025-05-15 21:51:24 [INFO] Data successfully written to ./tmp/credit_cards_billing_2.parquet
+2025-05-15 21:51:29 [INFO] File successfully uploaded to HDFS at /stage/credit_cards_billing
+2025-05-15 21:51:29 [INFO] Local file /home/hadoop/tmp/credit_cards_billing_2.parquet removed after upload.
+2025-05-15 21:51:29 [INFO] Saved state for credit_cards_billing to /home/hadoop/state/credit_cards_billing.parquet
+2025-05-15 21:51:29 [INFO] Pipeline completed successfully for file: credit_cards_billing 
+ ==========================================================================================================================================================================================================================================================
+2025-05-15 21:51:30 [INFO] Processing file: loans
+2025-05-15 21:51:30 [INFO] Extracted loans: 
+columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason'] 
+rows => 1000
+2025-05-15 21:51:30 [INFO] loans schema validation passed.
+2025-05-15 21:51:30 [INFO] Loaded state for loans.utilization_date from /home/hadoop/state/loans.parquet
+2025-05-15 21:51:30 [INFO] Filtered loans.utilization_date b, remaining rows => 1000
+2025-05-15 21:51:30 [INFO] Transformed loans: 
+columns => ['customer_id', 'loan_type', 'amount_utilized', 'utilization_date', 'loan_reason', 'age', 'total_cost', 'processing_time', 'partition_date', 'partition_hour'] 
+rows => 1000
+2025-05-15 21:51:30 [INFO] Data successfully written to ./tmp/loans_2.parquet
+2025-05-15 21:51:32 [INFO] File successfully uploaded to HDFS at /stage/loans
+2025-05-15 21:51:32 [INFO] Local file /home/hadoop/tmp/loans_2.parquet removed after upload.
+2025-05-15 21:51:32 [INFO] Saved state for loans to /home/hadoop/state/loans.parquet
+2025-05-15 21:51:32 [INFO] Pipeline completed successfully for file: loans 
+ ==========================================================================================================================================================================================================================================================
