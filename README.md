@@ -44,18 +44,6 @@ Pipeline steps:
 7. Log + Send email on failure
 
 
-## 📁 Project Structure
-
-
-Thanks for the screenshot! I see the tree structure is getting messy with long comments in a single line. To improve readability and make it look neat in the README, you can:
-
-* Use **indented multiline comments** instead of inline comments.
-* Avoid wrapping long comments on the same line with the file or folder name.
-* Use bullet points or a description list style after the tree structure.
-
-Here is a cleaned-up, clear and well-formatted version that looks good in Markdown README:
-
-
 
 ## 📁 Project Structure
 
