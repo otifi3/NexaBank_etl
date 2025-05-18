@@ -98,4 +98,4 @@ done
     done
 } > "$OUTPUT_PATH"
 
-echo "✅ Report generated at: $OUTPUT_PATH"
+echo "Report generated at: $OUTPUT_PATH"
