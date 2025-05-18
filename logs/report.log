@@ -1,0 +1,33 @@
+=== PIPELINE LOG ANALYSIS ===
+=== 2025-05-17 17:17:58 ||| 2025-05-18 17:17:58 ===
+
+Successful Pipelines: 5
+Failed Pipelines: 5
+
+Success per File:
+  - support_tickets: 1
+  - customer_profiles: 1
+  - loans: 1
+  - transactions: 1
+  - credit_cards_billing: 1
+
+Warnings per File:
+  - support_tickets: 1
+  - customer_profiles: 1
+  - loans: 1
+  - transactions: 1
+  - credit_cards_billing: 1
+
+Failures per File:
+  - support_tickets: 1
+  - customer_profiles: 1
+  - loans: 1
+  - transactions: 1
+  - credit_cards_billing: 1
+
+Row Counts per File:
+  - support_tickets: 15000 rows
+  - customer_profiles: 100000 rows
+  - loans: 1000 rows
+  - transactions: 100000 rows
+  - credit_cards_billing: 200000 rows
