@@ -1,0 +1,1 @@
+0 21 * * * bash src/src/log_analysis.sh /home/hadoop/logs/etl.log /home/hadoop/logs/report.log 
