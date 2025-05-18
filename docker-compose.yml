@@ -20,7 +20,3 @@ services:
 networks:
   hive_cluster_hnet:
     external: true
-#     networks:
-#       - py_net
-# networks:
-#   py_net:

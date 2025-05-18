@@ -15,12 +15,7 @@ class JSONExtractor:
         Extracts data from a JSON file and returns it as a pandas DataFrame.
         """
         try:
-            with open(file_path, 'r') as file:
-                data = json.load(file)
-
-            # Normalize the JSON data into a flat table
-            df = pd.json_normalize(data)
-
+            df = pd.read_json(file_path)
             return df
         except:
             self.logger.log('error', f'Wrong file path {file_path}')

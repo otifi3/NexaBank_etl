@@ -2,6 +2,11 @@ from file_monitor.file_monitor import FileMonitor
 from pipeline.pipeline import Pipeline
 from pipeline.logger.logger import Logger 
 
+import warnings
+
+# Suppress all warnings globally
+warnings.filterwarnings("ignore")
+
 def main():
     # Initialize logger
     logger = Logger('./logs/etl.log')  # Ensure you have a log file to capture logs

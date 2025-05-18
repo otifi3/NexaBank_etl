@@ -119,9 +119,11 @@ class StateStore:
                 combined.update(new_value)
             else:
                 combined.add(new_value)
-            self._state = list(combined)
+            self._state = list(combined)  # Ensure unique values (no duplicates)
         else:
-            if new_value > self._state:
+            if isinstance(new_value, list):
+                self._state = max(new_value)
+            elif new_value > self._state:
                 self._state = new_value
 
     def filter(self, df, table_name, column_name) -> pd.DataFrame:
@@ -152,19 +154,22 @@ class StateStore:
             return df
 
         if isinstance(self._state, list):
-            filtered_df = df[~df[column_name].isin(self._state)]
-            self.logger.log('info', f"Filtered {table_name}.{column_name}, remaining rows => {filtered_df.shape[0]}")
+            # Exclude rows where the column value is in the state list
+            filtered_df = df.loc[~df[column_name].isin(self._state)]
+            self.logger.log('info', f"Filtered {table_name}.{column_name} (list state), remaining rows => {filtered_df.shape[0]}")
             new_vals = filtered_df[column_name].unique().tolist()
             if new_vals:
                 self.update_or_add(new_vals)
         else:
             val = self._state
-            filtered_df = df[df[column_name] > val]
-            self.logger.log('info', f"Filtered {table_name}.{column_name}, remaining rows => {filtered_df.shape[0]}")
+            # Exclude rows where the column value is less than or equal to the state
+            filtered_df = df.loc[df[column_name] > val]
+            self.logger.log('info', f"Filtered {table_name}.{column_name} (scalar state), remaining rows => {filtered_df.shape[0]}")
             if not filtered_df.empty:
-                max_new = filtered_df[column_name].max()
+                max_new = filtered_df[column_name].max()  # Get the max value in the filtered rows
                 self.update_or_add(max_new)
 
+        # If filtering results in an empty DataFrame, raise an error
         if filtered_df.empty:
             self.logger.log('warning', f"Filtering on {table_name}.{column_name} resulted in empty DataFrame")
             raise ValueError(f"No data left after filtering on {table_name}.{column_name}")
