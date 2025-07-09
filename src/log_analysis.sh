@@ -96,6 +96,6 @@ done
     for file in "${!row_counts[@]}"; do
         echo "  - $file: ${row_counts[$file]} rows"
     done
-} > "$OUTPUT_PATH"
+} >> "$OUTPUT_PATH"
 
 echo "Report generated at: $OUTPUT_PATH"
